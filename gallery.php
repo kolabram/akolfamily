@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - The Akol Family Heritage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #FBF5EC;
+            color: #4A3728;
+        }
+
+        nav {
+            background: rgba(251, 245, 236, 0.97);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #9E3D0F;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4A3728;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #C4631A;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #2E1A08 0%, #4A2A10 100%);
+            color: white;
+            padding: 120px 5% 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header h1 em {
+            color: #C4631A;
+            font-style: italic;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .gallery-filter {
+            padding: 40px 5% 20px;
+            text-align: center;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            margin: 5px;
+            border: 2px solid #C4631A;
+            background: transparent;
+            color: #C4631A;
+            cursor: pointer;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #C4631A;
+            color: white;
+        }
+
+        .gallery-container {
+            padding: 20px 5% 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #C4631A, #9E3D0F);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-image .icon-placeholder {
+            font-size: 4rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.05);
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-info h3 {
+            color: #4A3728;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .gallery-info p {
+            color: #7A6654;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .gallery-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 12px;
+            background: rgba(196,99,26,0.1);
+            color: #C4631A;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-img {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .modal-caption {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #0A0806;
+            color: white;
+            padding: 3rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-content h3, .footer-content h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-content a {
+            color: #C4631A;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.php" class="logo">🪨 The Akols</a>
+    <ul class="nav-links">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="heritage.php">Heritage</a></li>
+        <li><a href="family.php">Family</a></li>
+        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="events.php">Events</a></li>
+        <li><a href="contact.php">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="page-header">
+    <h1>Our Family <em>Gallery</em></h1>
+    <p>Moments from Nyero Subcounty and beyond - harvest seasons, graduations, heritage visits, and the everyday life of the Akols</p>
+</div>
+
+<div class="gallery-filter">
+    <button class="filter-btn active" data-filter="all">All Photos</button>
+    <button class="filter-btn" data-filter="heritage">Heritage</button>
+    <button class="filter-btn" data-filter="family">Family</button>
+    <button class="filter-btn" data-filter="farming">Farming</button>
+    <button class="filter-btn" data-filter="celebrations">Celebrations</button>
+</div>
+
+<div class="gallery-container">
+    <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+        <img class="modal-img" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h3>🪨 The Akol Family</h3>
+            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda. Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p><a href="index.php">Home</a></p>
+            <p><a href="about.php">About Us</a></p>
+            <p><a href="heritage.php">Nyero Heritage</a></p>
+            <p><a href="family.php">Our Family</a></p>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <p><a href="gallery.php">Gallery</a></p>
+            <p><a href="events.php">Events</a></p>
+            <p><a href="contact.php">Contact</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; <?php echo date("Y"); ?> The Akol Family - Nyero Subcounty, Kumi District, Eastern Uganda</p>
+    </div>
+</footer>
+
+<script>
+    // Gallery Data - Iteso Cultural Theme
+    const galleryItems = [
+        {
+            id: 1,
+            title: "Nyero Rock Paintings Visit",
+            description: "The whole family at Nyero 2 - the main shelter with the giant boulder and famous concentric circles. The rock art at Nyero is attributed to ancient inhabitants who lived in this area before the Iteso people arrived over 300 years ago [citation:1].",
+            category: "heritage",
+            icon: "🪨",
+            image: null
+        },
+        {
+            id: 2,
+            title: "Traditional Iteso Attire",
+            description: "The Iteso people of Eastern Uganda have rich cultural traditions expressed through their clothing, music, and ceremonies. Traditional attire often features vibrant colors and patterns unique to the Teso region [citation:4].",
+            category: "heritage",
+            icon: "👘",
+            image: null
+        },
+        {
+            id: 3,
+            title: "Millet Harvest Season",
+            description: "Immaculate leads the millet harvest on the family farm in Nyero Subcounty. Millet has been grown on this land for three Akol generations. Millet and sorghum are staple crops for the Iteso people [citation:6].",
+            category: "farming",
+            icon: "🌾",
+            image: null
+        },
+        {
+            id: 4,
+            title: "Ateso Language & Oral Traditions",
+            description: "The Iteso speak Ateso, a Nilotic language. Oral traditions, proverbs, and storytelling are central to preserving Iteso history and values across generations [citation:3][citation:5].",
+            category: "family",
+            icon: "📖",
+            image: null
+        },
+        {
+            id: 5,
+            title: "David's Graduation",
+            description: "David receives his IT certificate at Busitema University. The entire family drove from Kumi at dawn to make sure they had the front seats. Education is highly valued among the Iteso people.",
+            category: "celebrations",
+            icon: "🎓",
+            image: null
+        },
+        {
+            id: 6,
+            title: "Sunrise over Nyero Inselberg",
+            description: "The granite hills of the Nyero inselberg at golden hour - just minutes from the Akol homestead. The Nyero rock shelters contain ancient paintings that are sacred to the Iteso people.",
+            category: "heritage",
+            icon: "🌅",
+            image: null
+        },
+        {
+            id: 7,
+            title: "Christmas Reunion 2025",
+            description: "Annual Christmas gathering at the Akol homestead. Over 40 relatives descend every December. Family reunions strengthen the bonds of Iteso kinship and community.",
+            category: "family",
+            icon: "🎄",
+            image: null
+        },
+        {
+            id: 8,
+            title: "The Family Farm",
+            description: "The Akol millet and sorghum farm in Nyero Subcounty - three generations of cultivation on the same red-laterite soil. Agriculture remains central to Iteso livelihood.",
+            category: "farming",
+            icon: "🌽",
+            image: null
+        },
+        {
+            id: 9,
+            title: "Iteso Music & Dance",
+            description: "Traditional Iteso music features drums, lyres, and rhythmic singing. Performances mark important occasions from weddings to community celebrations [citation:5].",
+            category: "celebrations",
+            icon: "🥁",
+            image: null
+        }
+    ];
+
+    function loadGallery(category = 'all') {
+        const grid = document.getElementById('galleryGrid');
+        grid.innerHTML = '';
+        
+        const filtered = category === 'all' ? galleryItems : galleryItems.filter(item => item.category === category);
+        
+        filtered.forEach(item => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.setAttribute('data-category', item.category);
+            galleryItem.innerHTML = `
+                <div class="gallery-image">
+                    <div class="icon-placeholder">${item.icon}</div>
+                </div>
+                <div class="gallery-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                    <span class="gallery-tag">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
+                </div>
+            `;
+            
+            galleryItem.addEventListener('click', () => openModal(item));
+            grid.appendChild(galleryItem);
+        });
+    }
+
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+
+    function openModal(item) {
+        modalImage.style.display = 'none';
+        modalCaption.innerHTML = `<h3>${item.title}</h3><p>${item.description}</p><p style="margin-top:15px;color:#C4631A;">📷 ${item.icon} ${item.title}</p><p style="margin-top:10px;font-size:0.8rem;"><em>Add your family photo here. Replace the icon with an actual image by adding an 'image' property to this gallery item.</em></p>`;
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            loadGallery(filter);
+        });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    loadGallery();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* ============================================================
+   AKOL FAMILY WEBSITE — Shared Stylesheet
+   Kumi Municipality & Nyero Subcounty, Eastern Uganda
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
+
+/* ── DESIGN TOKENS ── */
+:root {
+  --ochre:       #C4631A;
+  --rust:        #9E3D0F;
+  --terracotta:  #D4845A;
+  --sand:        #F0DCC0;
+  --savanna:     #EAD49A;
+  --sky:         #6B9DBF;
+  --dusk:        #2B4A6B;
+  --night:       #111827;
+  --white:       #FFFFFF;
+  --muted:       #7A6654;
+  --stone:       #4A3728;
+  --rock-dark:   #2E2118;
+  --bg:          #FBF5EC;
+  --warm-white:  #FAF6F0;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'Outfit', sans-serif;
+
+  --nav-h: 62px;
+  --max-w: 1120px;
+  --radius: 2px;
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--stone);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ── NAVIGATION ── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(251,245,236,0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(196,99,26,0.13);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: var(--nav-h);
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem; font-weight: 700;
+  color: var(--rust);
+  display: flex; align-items: center; gap: 0.55rem;
+}
+.nav-brand .brand-icon { font-size: 1.4rem; }
+.nav-links { display: flex; gap: 0.25rem; align-items: center; }
+.nav-links a {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--stone); border-radius: var(--radius);
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+.nav-links a:hover { background: rgba(196,99,26,0.08); color: var(--ochre); }
+.nav-links a.active {
+  background: var(--ochre); color: var(--white);
+}
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--stone); border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.mobile-menu {
+  display: none;
+  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 199;
+  background: var(--warm-white);
+  border-bottom: 1px solid rgba(196,99,26,0.1);
+  padding: 1rem 5vw 1.5rem;
+  flex-direction: column; gap: 0.25rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 0.75rem 1rem; font-size: 0.9rem;
+  font-weight: 500; color: var(--stone);
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+}
+.mobile-menu a:hover, .mobile-menu a.active {
+  background: var(--ochre); color: white;
+}
+
+/* ── PAGE HERO (inner pages) ── */
+.page-hero {
+  padding: calc(var(--nav-h) + 4rem) 5vw 4rem;
+  background: var(--night);
+  position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: '';
+  position: absolute; inset: 0; opacity: 0.06;
+  background: radial-gradient(circle at 70% 50%, var(--ochre) 0%, transparent 60%);
+}
+.page-hero-inner { position: relative; z-index: 1; max-width: var(--max-w); }
+.page-breadcrumb {
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.page-breadcrumb a { color: var(--terracotta); transition: color 0.2s; }
+.page-breadcrumb a:hover { color: var(--sand); }
+.page-breadcrumb span { opacity: 0.4; }
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700; line-height: 1.05;
+  color: var(--white); margin-bottom: 1rem;
+}
+.page-title em { color: var(--terracotta); font-style: italic; }
+.page-subtitle {
+  font-size: 1.05rem; color: rgba(255,255,255,0.55);
+  max-width: 560px; line-height: 1.75;
+}
+/* Nyero SVG decoration on page heroes */
+.hero-deco {
+  position: absolute; right: 5vw; top: 50%;
+  transform: translateY(-50%);
+  width: min(340px, 35vw); opacity: 0.08; z-index: 0;
+}
+
+/* ── SECTION UTILITIES ── */
+.section { padding: 5rem 5vw; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.s-label {
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ochre); margin-bottom: 0.6rem; display: block;
+}
+.s-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+  font-weight: 700; line-height: 1.15;
+  color: var(--stone); margin-bottom: 1rem;
+}
+.s-body {
+  font-size: 0.975rem; line-height: 1.85;
+  color: var(--muted); max-width: 580px;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block; padding: 0.85rem 2rem;
+  font-family: var(--font-body); font-size: 0.875rem;
+  font-weight: 600; letter-spacing: 0.05em;
+  border-radius: var(--radius); cursor: pointer;
+  transition: all 0.2s; border: none;
+}
+.btn-primary { background: var(--ochre); color: var(--white); }
+.btn-primary:hover { background: var(--rust); transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: var(--ochre);
+  border: 1.5px solid var(--ochre);
+}
+.btn-outline:hover { background: var(--ochre); color: white; }
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-ghost:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+/* ── CARDS ── */
+.card {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(196,99,26,0.12);
+}
+
+/* ── IMAGE PLACEHOLDERS ── */
+/*
+  HOW TO REPLACE IMAGES:
+  Each placeholder has a data-img-id attribute.
+  To replace, add your image file to the img/ folder and
+  update the src in the relevant <img> tag, or replace the
+  placeholder div with: <img src="img/YOUR_FILE.jpg" alt="Description"/>
+
+  Placeholder IDs used across the site:
+    hero-bg          → index.html hero background
+    about-family     → about.html family portrait
+    about-homestead  → about.html homestead photo
+    member-charles   → family.html Charles portrait
+    member-immaculate→ family.html Immaculate portrait
+    member-david     → family.html David portrait
+    member-agnes     → family.html Agnes portrait
+    member-emmanuel  → family.html Emmanuel portrait
+    member-omoding   → family.html Mzee Omoding portrait
+    gallery-nyero    → gallery.html Nyero rocks photo
+    gallery-harvest  → gallery.html harvest photo
+    gallery-grad     → gallery.html graduation photo
+    gallery-christmas→ gallery.html Christmas photo
+    gallery-sunrise  → gallery.html sunrise/inselberg photo
+    gallery-farm     → gallery.html farm photo
+    heritage-nyero2  → heritage.html Nyero 2 panel photo
+    heritage-shelter → heritage.html shelter exterior
+*/
+.img-placeholder {
+  background: linear-gradient(145deg, #3D2010, #6B3A1F);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem; position: relative; overflow: hidden;
+}
+.img-placeholder .ph-icon { font-size: 3rem; opacity: 0.4; }
+.img-placeholder .ph-label {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); text-align: center; padding: 0 1rem;
+}
+.img-placeholder .ph-id {
+  font-size: 0.65rem; font-family: monospace;
+  color: rgba(196,99,26,0.6); margin-top: 0.25rem;
+}
+
+/* ── FADE-IN ANIMATION ── */
+.fade-up {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: none; }
+.fade-up.delay-1 { transition-delay: 0.1s; }
+.fade-up.delay-2 { transition-delay: 0.2s; }
+.fade-up.delay-3 { transition-delay: 0.3s; }
+
+/* ── FOOTER ── */
+.site-footer {
+  background: #0A0806;
+  padding: 3.5rem 5vw 2rem;
+}
+.footer-grid {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-brand .brand-name {
+  font-family: var(--font-display); font-size: 1.4rem;
+  font-weight: 700; color: var(--sand); margin-bottom: 0.75rem;
+}
+.footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.75; }
+.footer-col h4 {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--terracotta); margin-bottom: 1rem;
+}
+.footer-col a {
+  display: block; font-size: 0.85rem;
+  color: rgba(255,255,255,0.35); margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--sand); }
+.footer-bottom {
+  max-width: var(--max-w); margin: 1.5rem auto 0;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 0.75rem;
+}
+.footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.18); }
+.footer-bottom a { color: rgba(196,99,26,0.5); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--ochre); }
+
+/* ── NYERO SVG COMPONENT ── */
+.nyero-circles-svg { pointer-events: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .hero-deco { display: none; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .section { padding: 3.5rem 5vw; }
+}

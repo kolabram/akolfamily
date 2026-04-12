@@ -1,0 +1,177 @@
+<?php include('includes/db.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events — The Akol Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .events-layout { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
+    .ev-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .ev-card {
+      background: var(--white); border-radius: var(--radius);
+      overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      display: grid; grid-template-columns: 80px 1fr;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .ev-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(196,99,26,.1); }
+    .ev-date-col {
+      background: var(--ochre); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 1.5rem 0;
+    }
+    .ev-day  { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: white; line-height: 1; }
+    .ev-mon  { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.75); margin-top: .2rem; }
+    .ev-body { padding: 1.5rem; }
+    .ev-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--stone); margin-bottom: .35rem; }
+    .ev-meta { display: flex; gap: 1rem; font-size: .78rem; color: var(--muted); margin-bottom: .75rem; }
+    .ev-desc { font-size: .875rem; line-height: 1.7; color: var(--muted); }
+    .ev-tag  { display: inline-block; margin-top: .75rem; padding: .22rem .65rem; border-radius: 2px; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; background: rgba(196,99,26,.1); color: var(--ochre); border: 1px solid rgba(196,99,26,.25); }
+
+    /* Past events */
+    .ev-card.past .ev-date-col { background: var(--muted); }
+    .ev-card.past .ev-title    { color: var(--muted); }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: calc(var(--nav-h) + 1.5rem); }
+    .sidebar-card { background: var(--white); border-radius: var(--radius); padding: 1.75rem; box-shadow: 0 1px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--stone); margin-bottom: 1rem; padding-bottom: .6rem; border-bottom: 2px solid var(--ochre); }
+    .mini-cal { display: grid; grid-template-columns: repeat(7,1fr); gap: .2rem; }
+    .cal-head { font-size: .68rem; text-align: center; font-weight: 700; color: var(--ochre); letter-spacing: .06em; padding: .3rem 0; }
+    .cal-day  { font-size: .78rem; text-align: center; padding: .3rem; border-radius: 2px; color: var(--muted); }
+    .cal-day.event { background: var(--ochre); color: white; font-weight: 700; }
+    .cal-day.today { border: 1.5px solid var(--ochre); color: var(--ochre); font-weight: 600; }
+    .upcoming-list { display: flex; flex-direction: column; gap: .75rem; }
+    .upcoming-item { display: flex; gap: .75rem; align-items: center; font-size: .83rem; }
+    .up-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ochre); flex-shrink: 0; }
+    .up-date { font-weight: 700; color: var(--ochre); min-width: 38px; }
+    .up-name { color: var(--muted); line-height: 1.4; }
+
+    @media(max-width:900px){ .events-layout{ grid-template-columns:1fr; } .sidebar{ position:static; } }
+  </style>
+</head>
+<body>
+<?php include('includes/nav.php'); ?>
+
+<div class="page-hero">
+  <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="rgba(196,99,26,0.9)" fill="none">
+      <circle cx="200" cy="200" r="14" fill="rgba(196,99,26,.3)" stroke-width="0"/>
+      <circle cx="200" cy="200" r="35" stroke-width="2"/><circle cx="200" cy="200" r="65" stroke-width="1.6"/>
+      <circle cx="200" cy="200" r="100" stroke-width="1.2"/>
+    </g>
+  </svg>
+  <div class="page-hero-inner">
+    <div class="page-breadcrumb"><a href="index.php">Home</a><span>›</span>Events</div>
+    <h1 class="page-title">Family <em>Events</em></h1>
+    <p class="page-subtitle">Upcoming gatherings, milestones, and community activities for the Akol family in 2026.</p>
+  </div>
+</div>
+
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="events-layout">
+      <div>
+        <span class="s-label fade-up">Upcoming in 2026</span>
+        <h2 class="s-title fade-up">What's Coming Up</h2>
+        <div class="ev-list" style="margin-top:2rem;">
+
+          <div class="ev-card fade-up">
+            <div class="ev-date-col"><div class="ev-day">25</div><div class="ev-mon">Apr</div></div>
+            <div class="ev-body">
+              <div class="ev-title">Easter Homecoming - Nyero Subcounty</div>
+              <div class="ev-meta"><span>📍 St. Peter's Nyero &amp; Akol Homestead</span><span>⏱ Full Day</span></div>
+              <p class="ev-desc">The extended Akol family returns to the homestead for the annual Easter celebration - Sunday worship at St. Peter's Nyero Parish, shared meals under the mango tree, and an evening walk to the Nyero rock paintings at sunset. All family members are expected home.</p>
+              <span class="ev-tag">Family</span>
+            </div>
+          </div>
+
+          <div class="ev-card fade-up delay-1">
+            <div class="ev-date-col"><div class="ev-day">14</div><div class="ev-mon">Jun</div></div>
+            <div class="ev-body">
+              <div class="ev-title">Nyero Heritage Day - Community Participation</div>
+              <div class="ev-meta"><span>📍 Nyero Rock Paintings Site</span><span>⏱ Morning, 3 hrs</span></div>
+              <p class="ev-desc">The Akol family will join the Kumi District cultural heritage awareness walk and conservation event at the Nyero rock art site. David will demonstrate his prototype mobile navigation app for the site. Emmanuel will serve as a junior guide. Charles will address the community on heritage protection.</p>
+              <span class="ev-tag">Community</span> <span class="ev-tag">Heritage</span>
+            </div>
+          </div>
+
+          <div class="ev-card fade-up delay-2">
+            <div class="ev-date-col"><div class="ev-day">03</div><div class="ev-mon">Aug</div></div>
+            <div class="ev-body">
+              <div class="ev-title">Agnes — A-Level Results &amp; Celebration</div>
+              <div class="ev-meta"><span>📍 Akol Homestead</span><span>⏱ Afternoon</span></div>
+              <p class="ev-desc">Agnes receives her UACE results from Ngora High School. The family will celebrate her achievement and walk through university application options together. She hopes to join Makerere University's School of Medicine. Immaculate has already planned the menu.</p>
+              <span class="ev-tag">Milestone</span>
+            </div>
+          </div>
+
+          <div class="ev-card fade-up">
+            <div class="ev-date-col"><div class="ev-day">12</div><div class="ev-mon">Sep</div></div>
+            <div class="ev-body">
+              <div class="ev-title">Charles &amp; Immaculate - 31st Wedding Anniversary</div>
+              <div class="ev-meta"><span>📍 St. Peter's Nyero &amp; Family Home</span><span>⏱ Full Day</span></div>
+              <p class="ev-desc">Charles and Immaculate mark 31 years of marriage. The children have quietly planned a special dinner and a re-visit to St. Peter's Nyero where the ceremony was held in 1995. Mzee Omoding will offer the family blessing.</p>
+              <span class="ev-tag">Anniversary</span>
+            </div>
+          </div>
+
+          <div class="ev-card fade-up delay-1">
+            <div class="ev-date-col"><div class="ev-day">22</div><div class="ev-mon">Dec</div></div>
+            <div class="ev-body">
+              <div class="ev-title">Annual Akol Family Reunion 2026</div>
+              <div class="ev-meta"><span>📍 Akol Homestead, Nyero Subcounty</span><span>⏱ 3 Days</span></div>
+              <p class="ev-desc">Three generations, one homestead, three days of celebration. The centrepiece this year: a guided family walk through all six Nyero rock shelters, led by Mzee Omoding who will share oral histories as the family explores the sites together. Theme: <em>Our Roots, Our Future.</em></p>
+              <span class="ev-tag">Annual</span> <span class="ev-tag">Nyero</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:3rem;">
+          <span class="s-label fade-up">Past Events</span>
+          <div class="ev-list" style="margin-top:1.5rem;">
+            <div class="ev-card past fade-up">
+              <div class="ev-date-col"><div class="ev-day">25</div><div class="ev-mon">Dec '25</div></div>
+              <div class="ev-body">
+                <div class="ev-title">Christmas Reunion 2025</div>
+                <div class="ev-meta"><span>📍 Akol Homestead</span></div>
+                <p class="ev-desc">Over 40 relatives gathered at the Akol homestead. Immaculate's groundnut stew was the unanimous winner of the day. Mzee Omoding told three different versions of the same Ateso story and the family loved every one of them.</p>
+                <span class="ev-tag">Completed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar fade-up delay-2">
+        <div class="sidebar-card">
+          <h3>📅 Quick Dates 2026</h3>
+          <div class="upcoming-list">
+            <div class="upcoming-item"><div class="up-dot"></div><div class="up-date">Apr 25</div><div class="up-name">Easter Homecoming</div></div>
+            <div class="upcoming-item"><div class="up-dot"></div><div class="up-date">Jun 14</div><div class="up-name">Nyero Heritage Day</div></div>
+            <div class="upcoming-item"><div class="up-dot"></div><div class="up-date">Aug 03</div><div class="up-name">Agnes — A-Level Results</div></div>
+            <div class="upcoming-item"><div class="up-dot"></div><div class="up-date">Sep 12</div><div class="up-name">31st Wedding Anniversary</div></div>
+            <div class="upcoming-item"><div class="up-dot"></div><div class="up-date">Dec 22</div><div class="up-name">Annual Family Reunion</div></div>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h3>🪨 Nyero Nearby</h3>
+          <p style="font-size:.875rem;color:var(--muted);line-height:1.7;">The Nyero Rock Paintings are 8 km from the homestead. Open daily with guided tours. Visit <a href="heritage.php" style="color:var(--ochre);font-weight:600;">our Heritage page</a> for all the details on visiting times, entry fees, and what to expect.</p>
+        </div>
+        <div class="sidebar-card">
+          <h3>📬 Stay Connected</h3>
+          <p style="font-size:.875rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Want to be informed about family events? Leave us a message on the contact page.</p>
+          <a href="contact.php" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact the Akols</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<?php include('includes/footer.php'); ?>
+<script src="js/main.js"></script>
+</body>
+</html>

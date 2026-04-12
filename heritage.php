@@ -1,0 +1,358 @@
+<?php include('includes/db.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nyero Heritage — The Akol Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── HERITAGE SPECIFIC ── */
+    .heritage-intro {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem; align-items: center;
+    }
+    .heritage-main-img {
+      aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden;
+    }
+    .hfact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 2rem;
+    }
+    .hf {
+      background: var(--rock-dark); border-radius: var(--radius);
+      padding: 1.2rem; border: 1px solid rgba(196,99,26,0.22);
+    }
+    .hf .num {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 700; color: var(--terracotta);
+      display: block; line-height: 1; margin-bottom: 0.3rem;
+    }
+    .hf p { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ── SHELTERS ── */
+    .shelters-wrap { margin-top: 3rem; }
+    .shelter-card {
+      background: var(--white); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 1.5rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      display: grid; grid-template-columns: 320px 1fr;
+    }
+    .shelter-card:nth-child(even) { grid-template-columns: 1fr 320px; }
+    .shelter-card:nth-child(even) .shelter-img { order: 2; }
+    .shelter-card:nth-child(even) .shelter-text { order: 1; }
+    .shelter-img { overflow: hidden; min-height: 260px; }
+    .shelter-text { padding: 2.5rem; }
+    .shelter-num-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--ochre); color: white;
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .shelter-text h3 {
+      font-family: var(--font-display); font-size: 1.5rem;
+      font-weight: 700; color: var(--stone); margin-bottom: 0.5rem;
+    }
+    .shelter-text .shelter-sub {
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ochre); margin-bottom: 1rem; font-weight: 600;
+    }
+    .shelter-text p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag {
+      padding: 0.25rem 0.75rem; border-radius: 2px;
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 600; background: rgba(196,99,26,0.1); color: var(--ochre);
+      border: 1px solid rgba(196,99,26,0.25);
+    }
+
+    /* ── VISIT INFO ── */
+    .visit-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .vi-card {
+      background: rgba(255,255,255,0.05); border-radius: var(--radius);
+      padding: 1.5rem; border: 1px solid rgba(196,99,26,0.2);
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .vi-icon {
+      font-size: 1.5rem; flex-shrink: 0;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      background: rgba(196,99,26,0.15); border-radius: var(--radius);
+    }
+    .vi-info h4 { font-size: 0.85rem; font-weight: 600; color: var(--sand); margin-bottom: 0.3rem; }
+    .vi-info p  { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+
+    /* SVG Illustration full-width */
+    .nyero-svg-panel {
+      background: var(--rock-dark); border-radius: var(--radius);
+      padding: 2.5rem; text-align: center;
+    }
+    .nyero-svg-panel p {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); margin-top: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .shelter-card,
+      .shelter-card:nth-child(even) { grid-template-columns: 1fr; }
+      .shelter-card:nth-child(even) .shelter-img,
+      .shelter-card:nth-child(even) .shelter-text { order: unset; }
+      .shelter-img { min-height: 220px; }
+    }
+    @media (max-width: 768px) {
+      .heritage-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .visit-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<?php include('includes/nav.php'); ?>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero" style="background: linear-gradient(160deg, #0D1006 0%, #1A1408 50%, #2E1A08 100%);">
+  <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="rgba(196,99,26,0.9)" fill="none">
+      <circle cx="200" cy="200" r="14" fill="rgba(196,99,26,.3)" stroke-width="0"/>
+      <circle cx="200" cy="200" r="35" stroke-width="2.2"/><circle cx="200" cy="200" r="65" stroke-width="1.8"/>
+      <circle cx="200" cy="200" r="98" stroke-width="1.4"/><circle cx="200" cy="200" r="135" stroke-width="1"/>
+      <circle cx="200" cy="200" r="175" stroke-width="0.7"/>
+    </g>
+    <g stroke="rgba(196,99,26,.5)" fill="none" stroke-width="1.8">
+      <ellipse cx="200" cy="78" rx="45" ry="16" transform="rotate(12,200,78)"/>
+      <ellipse cx="322" cy="200" rx="42" ry="15" transform="rotate(88,322,200)"/>
+    </g>
+  </svg>
+  <div class="page-hero-inner">
+    <div class="page-breadcrumb"><a href="index.php">Home</a><span>›</span>Nyero Heritage</div>
+    <h1 class="page-title">Nyero Rock<br/><em>Paintings</em></h1>
+    <p class="page-subtitle">Our neighbour, our pride — the most important prehistoric rock art in Uganda, just 8 km from the Akol homestead in Nyero Subcounty.</p>
+  </div>
+</div>
+
+<!-- ══ HERITAGE INTRO ══ -->
+<section class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="heritage-intro">
+      <div class="fade-up">
+        <span class="s-label">Uganda's Ancient Treasure</span>
+        <h2 class="s-title">Painted on Granite,<br/>Preserved by Time</h2>
+        <p class="s-body">
+          The Nyero Rock Paintings are located in Kumi District, 8 km west of Kumi town along the Kumi–Ngora road — within Nyero Subcounty itself, the very subcounty the Akol family calls home. First documented in 1913 and added to Uganda's UNESCO World Heritage Tentative List in 1997, the paintings are executed in red and white pigments on six granite rock shelters, dominated by concentric circles, canoe shapes, and geometric motifs.
+        </p>
+        <p class="s-body" style="margin-top:1rem;">
+          The rock shelters are believed to have been sacred places used for rain-making ceremonies, offering to the gods, and clan prayers. Oral tradition records that the Iteso people would journey from far and wide to pray at these sites. Traces of smoke from ancient sacrifices are still visible in some of the caves today.
+        </p>
+        <a href="contact.php" class="btn btn-outline" style="margin-top:1.75rem;">Plan a Visit via the Akols →</a>
+      </div>
+      <div class="fade-up delay-1">
+        <div class="heritage-main-img">
+          <!-- IMAGE SLOT: heritage-nyero2
+               Replace with: <img src="img/heritage-nyero2.jpg" alt="Nyero 2 main panel with concentric circles"> -->
+          <div class="img-placeholder" style="height:100%;min-height:300px;">
+            <span class="ph-icon">🪨</span>
+            <span class="ph-label">Nyero 2 — Main Shelter Panel</span>
+            <span class="ph-id">img/heritage-nyero2.jpg</span>
+          </div>
+        </div>
+        <div class="hfact-grid" style="margin-top:1rem;">
+          <div class="hf"><span class="num">6</span><p>Rock shelters across the Nyero inselberg</p></div>
+          <div class="hf"><span class="num">1,000+</span><p>Years old; some estimates 12,000 years</p></div>
+          <div class="hf"><span class="num">1997</span><p>Added to UNESCO Tentative World Heritage List</p></div>
+          <div class="hf"><span class="num">1000/-</span><p>UGX — featured on Uganda's 1,000 shilling note</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SVG ART PANEL ══ -->
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <span class="s-label fade-up">Rock Art Recreation</span>
+    <h2 class="s-title fade-up">The Nyero Paintings — Illustrated</h2>
+    <p class="s-body fade-up" style="margin-bottom:2rem;">An artistic SVG recreation of the Nyero 2 main panel, showing the characteristic concentric circles, canoe shapes, and geometric motifs painted in red pigment on granite.</p>
+    <div class="nyero-svg-panel fade-up">
+      <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;">
+        <text x="16" y="22" fill="rgba(196,99,26,0.5)" font-size="11" font-family="monospace" letter-spacing="2">NYERO 2 — MAIN PANEL RECREATION · KUMI DISTRICT, EASTERN UGANDA</text>
+        <!-- Rock surface bg -->
+        <rect width="700" height="380" fill="rgba(46,33,24,0.5)" rx="2"/>
+        <!-- Large concentric circles (centre-left) -->
+        <g stroke="#C4631A" fill="none" opacity="0.88">
+          <circle cx="250" cy="200" r="16" fill="rgba(196,99,26,0.4)" stroke-width="0"/>
+          <circle cx="250" cy="200" r="34" stroke-width="2.8"/>
+          <circle cx="250" cy="200" r="58" stroke-width="2.3"/>
+          <circle cx="250" cy="200" r="84" stroke-width="1.9"/>
+          <circle cx="250" cy="200" r="112" stroke-width="1.5"/>
+          <circle cx="250" cy="200" r="142" stroke-width="1.1"/>
+        </g>
+        <!-- Second circles (upper right) -->
+        <g stroke="#C4631A" fill="none" opacity="0.65">
+          <circle cx="510" cy="110" r="11" fill="rgba(196,99,26,.3)" stroke-width="0"/>
+          <circle cx="510" cy="110" r="26" stroke-width="2.2"/>
+          <circle cx="510" cy="110" r="46" stroke-width="1.8"/>
+          <circle cx="510" cy="110" r="68" stroke-width="1.4"/>
+        </g>
+        <!-- Third set - white (Nyero 1/3 style) -->
+        <g stroke="rgba(255,255,255,0.6)" fill="none" opacity="0.7">
+          <circle cx="610" cy="295" r="9" fill="rgba(255,255,255,.2)" stroke-width="0"/>
+          <circle cx="610" cy="295" r="21" stroke-width="1.8"/>
+          <circle cx="610" cy="295" r="36" stroke-width="1.4"/>
+          <circle cx="610" cy="295" r="52" stroke-width="1"/>
+        </g>
+        <!-- Canoe shapes -->
+        <g stroke="#C4631A" fill="none" stroke-width="2.2" opacity="0.75">
+          <ellipse cx="560" cy="240" rx="54" ry="19" transform="rotate(12,560,240)"/>
+          <ellipse cx="90"  cy="120" rx="46" ry="16" transform="rotate(-8,90,120)"/>
+          <ellipse cx="440" cy="330" rx="50" ry="17" transform="rotate(5,440,330)"/>
+        </g>
+        <!-- U-shapes -->
+        <g stroke="rgba(196,99,26,0.65)" fill="none" stroke-width="2">
+          <path d="M 50 250 Q 50 280 68 280 Q 86 280 86 250"/>
+          <path d="M 628 148 Q 628 172 645 172 Q 662 172 662 148"/>
+        </g>
+        <!-- Sausage / divided shapes -->
+        <g stroke="rgba(196,99,26,0.55)" fill="none" stroke-width="1.8">
+          <rect x="660" y="60"  width="24" height="60" rx="12"/>
+          <line x1="660" y1="88"  x2="684" y2="88" stroke-width="1.3"/>
+          <rect x="16"  y="270" width="22" height="54" rx="11"/>
+          <line x1="16"  y1="296" x2="38"  y2="296" stroke-width="1.3"/>
+        </g>
+        <!-- Dot patterns -->
+        <g fill="rgba(196,99,26,0.75)">
+          <circle cx="380" cy="55" r="4.5"/><circle cx="400" cy="46" r="3.5"/>
+          <circle cx="420" cy="58" r="4"/><circle cx="440" cy="48" r="3.5"/>
+          <circle cx="460" cy="60" r="4"/>
+        </g>
+        <!-- Lines/strokes -->
+        <g stroke="rgba(196,99,26,0.45)" stroke-width="1.5" fill="none">
+          <line x1="140" y1="340" x2="180" y2="340"/><line x1="185" y1="335" x2="220" y2="335"/>
+          <line x1="225" y1="342" x2="255" y2="342"/>
+        </g>
+        <text x="16" y="368" fill="rgba(255,255,255,0.18)" font-size="9" font-family="monospace">
+          Red &amp; white pigments on granite · Est. before 1250 CE · Nyero Town Council, Kumi District
+        </text>
+      </svg>
+      <p>Artistic recreation of rock art motifs — concentric circles, canoes, U-shapes &amp; dots</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SIX SHELTERS ══ -->
+<section class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <span class="s-label fade-up">The Six Shelters</span>
+    <h2 class="s-title fade-up">Exploring Nyero 1–6</h2>
+
+    <div class="shelters-wrap">
+      <!-- NYERO 1 -->
+      <div class="shelter-card fade-up">
+        <div class="shelter-img">
+          <!-- IMAGE SLOT: heritage-nyero1
+               Replace with: <img src="img/heritage-nyero1.jpg" alt="Nyero 1 shelter"> -->
+          <div class="img-placeholder" style="height:100%;min-height:260px;background:linear-gradient(145deg,#1A0E08,#4A2010);">
+            <span class="ph-icon">⭕</span>
+            <span class="ph-label">Nyero 1 — White Circles Shelter</span>
+            <span class="ph-id">img/heritage-nyero1.jpg</span>
+          </div>
+        </div>
+        <div class="shelter-text">
+          <div class="shelter-num-badge">1</div>
+          <h3>Nyero 1 — The White Circles</h3>
+          <div class="shelter-sub">Small Rock Shelter · North End</div>
+          <p>A small rock shelter formed by a low overhanging rock perched above three supporting rocks. On the outer edge are six sets of concentric circles painted in white pigment, together with acacia-pod shapes. These white geometric forms are among the most striking on the site and are believed to have been used in sacred rituals for rain-making and fertility.</p>
+          <div class="feature-tags">
+            <span class="tag">White Pigment</span>
+            <span class="tag">Concentric Circles</span>
+            <span class="tag">Acacia Pod Shapes</span>
+            <span class="tag">Rain-making</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NYERO 2 -->
+      <div class="shelter-card fade-up">
+        <div class="shelter-img">
+          <!-- IMAGE SLOT: heritage-nyero2-shelter
+               Replace with: <img src="img/heritage-nyero2-shelter.jpg" alt="Nyero 2 shelter exterior"> -->
+          <div class="img-placeholder" style="height:100%;min-height:260px;background:linear-gradient(145deg,#2E1A08,#6B3A1F);">
+            <span class="ph-icon">🪨</span>
+            <span class="ph-label">Nyero 2 — Main Shelter</span>
+            <span class="ph-id">img/heritage-nyero2-shelter.jpg</span>
+          </div>
+        </div>
+        <div class="shelter-text">
+          <div class="shelter-num-badge">2</div>
+          <h3>Nyero 2 — The Main Shelter</h3>
+          <div class="shelter-sub">Largest Shelter · 10m Vertical Rock Wall</div>
+          <p>The most important and impressive shelter. A 10-metre high vertical rock forms the back wall, with an overhang created by an enormous boulder estimated to weigh at least 20,000 tonnes. Over 40 red-painted images include the famous "canoe" shapes unique to this site, concentric circles as the dominant motif, U-shapes, vertical divided sausage shapes, lines, and dots. The overhang protects the paintings from direct rain, contributing to their exceptional preservation.</p>
+          <div class="feature-tags">
+            <span class="tag">Red Pigment</span>
+            <span class="tag">40+ Images</span>
+            <span class="tag">Canoe Shapes</span>
+            <span class="tag">Concentric Circles</span>
+            <span class="tag">20,000-tonne Boulder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NYERO 3 -->
+      <div class="shelter-card fade-up">
+        <div class="shelter-img">
+          <!-- IMAGE SLOT: heritage-nyero3
+               Replace with: <img src="img/heritage-nyero3.jpg" alt="Nyero 3 prayer shelter"> -->
+          <div class="img-placeholder" style="height:100%;min-height:260px;background:linear-gradient(145deg,#1A2A08,#3A5010);">
+            <span class="ph-icon">🙏</span>
+            <span class="ph-label">Nyero 3 — Prayer Shelter</span>
+            <span class="ph-id">img/heritage-nyero3.jpg</span>
+          </div>
+        </div>
+        <div class="shelter-text">
+          <div class="shelter-num-badge">3</div>
+          <h3>Nyero 3 — The Prayer Shelter</h3>
+          <div class="shelter-sub">Northern End · Sacred Prayer Site</div>
+          <p>About 8 minutes' walk from Nyero 2. Formed by a large boulder perched on supporting rocks with no standing room — visitors must crouch to reach the paintings. The ceiling shows white concentric circles surrounded by double curved designs and double lines divided into smaller compartments. This was the sacred prayer place where the Iteso made offerings to the gods for rain, health, blessings, and childbirth. Its concentric circle symbol was adopted by the Uganda Museum as their official logo.</p>
+          <div class="feature-tags">
+            <span class="tag">White Circles</span>
+            <span class="tag">Uganda Museum Logo</span>
+            <span class="tag">Sacred Prayer Site</span>
+            <span class="tag">Iteso Offerings</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="s-body" style="margin-top:1rem;font-style:italic;color:var(--muted);">
+      Nyero 4, 5, and 6 are smaller shelters on the south-western and western sides of the inselberg, each with additional geometric and red finger-painted motifs. A guided tour at the entrance gate covers all six.
+    </p>
+  </div>
+</section>
+
+<!-- ══ VISIT INFORMATION ══ -->
+<section class="section" style="background:var(--rock-dark);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:0.04;background:url('data:image/svg+xml,%3Csvg width=4 height=4 xmlns=http://www.w3.org/2000/svg%3E%3Crect width=1 height=1 fill=white/%3E%3C/svg%3E');"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <span class="s-label fade-up" style="color:var(--terracotta);">Practical Information</span>
+    <h2 class="s-title fade-up" style="color:var(--sand);">Plan Your Visit</h2>
+    <p class="s-body fade-up" style="color:rgba(255,255,255,0.5);">The Nyero Rock Paintings are open daily. A guided tour is mandatory and included. As a local Akol family, we are happy to give visiting friends and relatives tips for the best experience.</p>
+    <div class="visit-grid">
+      <div class="vi-card fade-up"><div class="vi-icon">📍</div><div class="vi-info"><h4>Location</h4><p>8 km west of Kumi town on the Kumi–Ngora road. 1 km west of Nyero village. Coordinates: 1°28'18"N 33°50'46"E</p></div></div>
+      <div class="vi-card fade-up delay-1"><div class="vi-icon">💰</div><div class="vi-info"><h4>Entry Fees</h4><p>Adult: UGX 30,000 · Camera/video equipment fee applies separately · A guide is mandatory (included in fee)</p></div></div>
+      <div class="vi-card fade-up delay-2"><div class="vi-icon">🕐</div><div class="vi-info"><h4>Opening Hours</h4><p>Open daily. Best visited in the morning to avoid midday heat. Allow 1.5–2 hours. Some climbing required on slippery rocks — caution in rainy season.</p></div></div>
+      <div class="vi-card fade-up delay-3"><div class="vi-icon">🚗</div><div class="vi-info"><h4>Getting There</h4><p>From Kumi town: boda-boda or private car westwards on the Kumi–Ngora road. No regular tour buses — hire a vehicle. Kampala is approx. 250 km away.</p></div></div>
+      <div class="vi-card fade-up"><div class="vi-icon">🌍</div><div class="vi-info"><h4>UNESCO Status</h4><p>On Uganda's UNESCO World Heritage Tentative List since 10 September 1997. The site is a gazetted National Monument since 1972 and is legally protected.</p></div></div>
+      <div class="vi-card fade-up delay-1"><div class="vi-icon">🏫</div><div class="vi-info"><h4>Conservation</h4><p>Please do not touch the paintings. Do not deface or quarry the rocks. The site faces threats from erosion and deforestation. Your responsible visit helps preserve it.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<?php include('includes/footer.php'); ?>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Family - The Akol Family Tree</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #FBF5EC;
+            color: #4A3728;
+        }
+
+        nav {
+            background: rgba(251, 245, 236, 0.97);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #9E3D0F;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4A3728;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #C4631A;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #2E1A08 0%, #4A2A10 100%);
+            color: white;
+            padding: 120px 5% 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header h1 em {
+            color: #C4631A;
+            font-style: italic;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .family-tree {
+            padding: 60px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Grandparents Section */
+        .grandparents-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .grandparents-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .grandparent-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            width: 280px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .grandparent-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .family-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #C4631A, #9E3D0F);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .family-image .placeholder {
+            font-size: 4rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .grandparent-card h3 {
+            color: #4A3728;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .family-role {
+            color: #C4631A;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .family-bio {
+            color: #7A6654;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Children of the Patriarchs Section */
+        .children-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #4A3728;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #C4631A;
+            display: inline-block;
+            width: auto;
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .family-branch {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .family-branch:hover {
+            transform: translateY(-3px);
+        }
+
+        .branch-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #C4631A;
+            padding-bottom: 15px;
+        }
+
+        .branch-icon {
+            font-size: 2.5rem;
+        }
+
+        .branch-header h2 {
+            color: #C4631A;
+            font-size: 1.5rem;
+        }
+
+        .branch-header .child-count {
+            background: #C4631A;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .branch-description {
+            background: rgba(196,99,26,0.08);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #4A3728;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .branch-description strong {
+            color: #C4631A;
+        }
+
+        .children-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .child-card {
+            background: #FBF5EC;
+            border-radius: 10px;
+            padding: 12px;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .child-card:hover {
+            transform: translateY(-3px);
+            background: #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .child-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            background: linear-gradient(135deg, #C4631A, #9E3D0F);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .child-avatar .placeholder {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .child-card h4 {
+            color: #4A3728;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+
+        .child-detail {
+            font-size: 0.7rem;
+            color: #C4631A;
+        }
+
+        .deceased-branch {
+            border-left: 4px solid #999;
+        }
+
+        .deceased-badge {
+            background: #999;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        /* Family Summary */
+        .family-summary {
+            background: linear-gradient(135deg, #2E1A08 0%, #4A2A10 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+        }
+
+        .family-summary h3 {
+            color: #C4631A;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #C4631A;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .family-quote {
+            font-style: italic;
+            margin-top: 20px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .grandparents-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .branch-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .stats-grid {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.php" class="logo">🪨 The Akols</a>
+    <ul class="nav-links">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="heritage.php">Heritage</a></li>
+        <li><a href="family.php">Family</a></li>
+        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="events.php">Events</a></li>
+        <li><a href="contact.php">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="page-header">
+    <h1>The Akol <em>Family Tree</em></h1>
+    <p>Three generations of the Akol family — rooted in Nyero Subcounty, Kumi District, Eastern Uganda</p>
+</div>
+
+<div class="family-tree">
+    
+    <!-- GRANDPARENTS - THE PATRIARCH & MATRIARCH -->
+    <div class="grandparents-section">
+        <div class="grandparents-container">
+            <div class="grandparent-card">
+                <div class="family-image">
+                    <div class="placeholder">👴🏿</div>
+                </div>
+                <h3>Papa Kelment Akol</h3>
+                <div class="family-role">FAMILY PATRIARCH</div>
+                <p class="family-bio">The foundation of the Akol family. A respected elder who has guided the family through generations with wisdom, faith, and strong Iteso values.</p>
+            </div>
+            
+            <div class="grandparent-card">
+                <div class="family-image">
+                    <div class="placeholder">👵🏿</div>
+                </div>
+                <h3>Tata Akiteng Phoebe</h3>
+                <div class="family-role">FAMILY MATRIARCH</div>
+                <p class="family-bio">The heart of the Akol family. Her love, prayers, and guidance have nurtured the family through joys and challenges across generations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHILDREN OF THE PATRIARCHS (From Eldest to Youngest) -->
+    <div class="children-section">
+        <div class="title-container">
+            <h2 class="section-title">👨‍👩‍👧‍👦 Children of Papa Kelment & Tata Phoebe</h2>
+        </div>
+
+        <!-- 1. Papa Akol Stephen - Eldest Child -->
+        <div class="family-branch">
+            <div class="branch-header">
+                <div class="branch-icon">👨‍👩‍👧‍👦</div>
+                <h2>1. Papa Akol Stephen</h2>
+                <span class="child-count">👶 14 Children</span>
+            </div>
+            <div class="branch-description">
+                <strong>📋 About this branch:</strong> Papa Akol Stephen is the <strong>eldest child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. He has been blessed with <strong>14 children</strong> who are spread across Uganda. His family is known for their strong work ethic, dedication to education, and active participation in community development in Kumi District.
+            </div>
+            <div class="children-grid">
+                
+            </div>
+        </div>
+
+        <!-- 2. Ija Acham Anna Phoebe -->
+        <div class="family-branch">
+            <div class="branch-header">
+                <div class="branch-icon">👩‍👧‍👦</div>
+                <h2>2. Ija Acham Anna Phoebe</h2>
+                <span class="child-count">👶 6 Children</span>
+            </div>
+            <div class="branch-description">
+                <strong>📋 About this branch:</strong> Ija Acham Anna Phoebe is the <strong>second child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. She has been blessed with <strong>6 children</strong>. Her family is known for their strong faith, hospitality, and dedication to serving the community through church and social activities.
+            </div>
+            <div class="children-grid">
+                
+            </div>
+        </div>
+
+        <!-- 3. Ija Alupo Norah -->
+        <div class="family-branch">
+            <div class="branch-header">
+                <div class="branch-icon">👩‍👧‍👦</div>
+                <h2>3. Ija Alupo Norah</h2>
+                <span class="child-count">👶 9 Children</span>
+            </div>
+            <div class="branch-description">
+                <strong>📋 About this branch:</strong> Ija Alupo Norah is the <strong>third child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. She has been blessed with <strong>9 children</strong>. Her family is recognized for their entrepreneurial spirit, with many members engaged in trade and business across Eastern Uganda.
+            </div>
+            <div class="children-grid">
+                
+            </div>
+        </div>
+
+        <!-- 4. Papa Omoding Joseph Benjamin - Deceased -->
+        <div class="family-branch deceased-branch">
+            <div class="branch-header">
+                <div class="branch-icon">🕊️</div>
+                <h2>4. Papa Omoding Joseph Benjamin <span class="deceased-badge">🕊️ Rest in Peace</span></h2>
+                <span class="child-count">👶 5 Children</span>
+            </div>
+            <div class="branch-description">
+                <strong>📋 About this branch:</strong> Papa Omoding Joseph Benjamin was the <strong>fourth child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. Though he is <strong>deceased</strong>, his legacy lives on through his <strong>5 children</strong>. His family continues to honor his memory through their commitment to education and community service.
+            </div>
+            <div class="children-grid">
+                
+            </div>
+        </div>
+
+        <!-- 5. Ija Amuge Dinah - Youngest Child -->
+        <div class="family-branch">
+            <div class="branch-header">
+                <div class="branch-icon">👩‍👧‍👦</div>
+                <h2>5. Ija Amuge Dinah</h2>
+                <span class="child-count">👶 8 Children</span>
+            </div>
+            <div class="branch-description">
+                <strong>📋 About this branch:</strong> Ija Amuge Dinah is the <strong>youngest child</strong> (5th child) of Papa Kelment Akol and Tata Akiteng Phoebe. She has been blessed with <strong>8 children</strong>. Her family is known for their warmth, unity, and dedication to preserving Iteso cultural traditions.
+            </div>
+            <div class="children-grid">
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- FAMILY SUMMARY -->
+    <div class="family-summary">
+        <h3>📊 The Akol Family Legacy</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Patriarch & Matriarch</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Children of Patriarchs</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">42</span>
+                <span class="stat-label">Grandchildren</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Great-Grandchildren</span>
+            </div>
+        </div>
+        <div class="family-quote">
+            "From Papa Kelment and Tata Phoebe grew a mighty tree - 5 branches, 42 children, and countless blessings. The Akol family continues to flourish in Nyero Subcounty and beyond."
+        </div>
+    </div>
+
+</div>
+
+<?php include('includes/footer.php'); ?>
+
+</body>
+</html>
