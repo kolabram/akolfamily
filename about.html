@@ -4,141 +4,439 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us — The Akol Family</title>
-  <link rel="stylesheet" href="css/style.css"/>
   <style>
-    /* ── ABOUT STORY GRID ── */
-<<<<<<< HEAD
-=======
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin: 3rem 0; }
-    .about-text { font-size: 1.1rem; line-height: 1.8; color: var(--muted); }
-    .about-text strong { color: var(--stone); font-weight: 600; }
-    .about-quote { font-style: italic; font-size: 1.2rem; color: var(--ochre); border-left: 4px solid var(--ochre); padding-left: 1.5rem; margin: 2rem 0; }
-    .story-section { margin: 4rem 0; }
-    .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .story-card { background: var(--white); border-radius: var(--radius); padding: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .story-card h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--stone); margin-bottom: 1rem; }
-    .story-card p { line-height: 1.7; color: var(--muted); }
-    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0; }
-    .value-card { text-align: center; padding: 2rem; background: var(--bg); border-radius: var(--radius); }
-    .value-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .value-card h4 { font-family: var(--font-display); font-size: 1.2rem; color: var(--stone); margin-bottom: 0.5rem; }
-    .value-card p { color: var(--muted); line-height: 1.6; }
-    .timeline { position: relative; margin: 4rem 0; }
-    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--ochre); transform: translateX(-50%); }
-    .timeline-item { display: flex; justify-content: space-between; align-items: center; margin: 3rem 0; }
-    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
-    .timeline-content { background: var(--white); border-radius: var(--radius); padding: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); width: 45%; }
-    .timeline-content h4 { font-family: var(--font-display); font-size: 1.2rem; color: var(--stone); margin-bottom: 0.5rem; }
-    .timeline-content p { color: var(--muted); line-height: 1.6; }
-    .timeline-dot { width: 20px; height: 20px; background: var(--ochre); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); border: 4px solid var(--white); box-shadow: 0 0 0 4px var(--bg); }
-    @media(max-width:768px){ .about-grid, .story-grid, .values-grid{ grid-template-columns:1fr; } .timeline-item{ flex-direction:column; } .timeline-content{ width:100%; margin:1rem 0; } .timeline::before{ left:20px; } .timeline-dot{ left:20px; } }
-  </style>
-</head>
-<body>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-    .story-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: start; margin-top: 3.5rem;
-    }
-    .story-img-wrap { position: relative; }
-    .story-img {
-      aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden;
-    }
-    .story-img-2 {
-      aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden;
-      margin-top: 1.5rem; margin-left: 3rem;
-    }
-    .quote-block {
-      background: var(--rock-dark); border-radius: var(--radius);
-      padding: 2rem; margin-top: 1.5rem;
-      border-left: 3px solid var(--ochre);
-    }
-    .quote-block p {
-      font-family: var(--font-display); font-size: 1.25rem;
-      font-style: italic; color: var(--sand); line-height: 1.6;
-    }
-    .quote-block cite {
-      display: block; margin-top: 0.75rem;
-      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--terracotta); font-style: normal;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* ── HISTORY TIMELINE ── */
-    .timeline { margin-top: 3rem; max-width: 720px; }
-    .tl-item {
-      display: flex; gap: 2rem; padding-bottom: 2.5rem;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #FBF5EC;
+      color: #4A3728;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(251, 245, 236, 0.97);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #9E3D0F;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4A3728;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #C4631A;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #2E1A08 0%, #4A2A10 100%);
+      color: white;
+      padding: 120px 5% 60px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 em {
+      color: #C4631A;
+      font-style: italic;
+    }
+
+    .page-header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.8;
+    }
+
+    .page-breadcrumb {
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .page-breadcrumb a {
+      color: #C4631A;
+      text-decoration: none;
+    }
+
+    /* Section */
+    .section {
+      padding: 80px 5%;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .s-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #C4631A;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .s-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #4A3728;
+      margin-bottom: 1.5rem;
+    }
+
+    .s-body {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #7A6654;
+    }
+
+    /* Story Grid */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .story-img-wrap {
       position: relative;
     }
-    .tl-item::before {
-      content: '';
-      position: absolute; left: 28px; top: 40px; bottom: 0;
-      width: 1px; background: rgba(196,99,26,0.2);
-    }
-    .tl-item:last-child::before { display: none; }
-    .tl-year {
-      flex-shrink: 0; text-align: center;
-      width: 58px;
-    }
-    .tl-dot {
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--ochre); border: 3px solid var(--bg);
-      margin: 0 auto 0.4rem; position: relative; z-index: 1;
-    }
-    .tl-y-label {
-      font-family: var(--font-display); font-size: 1rem;
-      font-weight: 700; color: var(--ochre);
-    }
-    .tl-content { padding-top: 0; }
-    .tl-content h3 {
-      font-family: var(--font-display); font-size: 1.15rem;
-      font-weight: 700; color: var(--stone); margin-bottom: 0.4rem;
-    }
-    .tl-content p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
 
-    /* ── VALUES GRID ── */
-    .values-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 1.5rem; margin-top: 3rem;
+    .story-img {
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #C4631A, #9E3D0F);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .val-card {
-      background: var(--white); padding: 2rem;
-      border-radius: var(--radius);
-      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
-      border-top: 3px solid var(--ochre);
-    }
-    .val-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .val-card h3 {
-      font-family: var(--font-display); font-size: 1.1rem;
-      font-weight: 700; color: var(--stone); margin-bottom: 0.4rem;
-    }
-    .val-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
 
-<<<<<<< HEAD
-    /* Image styling */
-    .story-img img, .story-img-2 img {
+    .story-img-2 {
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      margin-left: 3rem;
+      background: linear-gradient(135deg, #C4631A, #9E3D0F);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-placeholder {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
     }
 
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-    @media (max-width: 768px) {
-      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .values-grid { grid-template-columns: 1fr 1fr; }
-      .story-img-2 { margin-left: 0; }
+    .ph-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
     }
+
+    .ph-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .ph-id {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
+
+    .quote-block {
+      background: #2E1A08;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+      border-left: 3px solid #C4631A;
+    }
+
+    .quote-block p {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #F5E6D3;
+      line-height: 1.6;
+    }
+
+    .quote-block cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C4631A;
+      font-style: normal;
+    }
+
+    /* Timeline */
+    .timeline {
+      margin-top: 3rem;
+      max-width: 720px;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 40px;
+      bottom: 0;
+      width: 1px;
+      background: rgba(196,99,26,0.2);
+    }
+
+    .tl-item:last-child::before {
+      display: none;
+    }
+
+    .tl-year {
+      flex-shrink: 0;
+      text-align: center;
+      width: 58px;
+    }
+
+    .tl-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #C4631A;
+      border: 3px solid #FBF5EC;
+      margin: 0 auto 0.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-y-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #C4631A;
+    }
+
+    .tl-content {
+      padding-top: 0;
+    }
+
+    .tl-content h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #4A3728;
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-content p {
+      font-size: 0.9rem;
+      color: #7A6654;
+      line-height: 1.7;
+    }
+
+    /* Values Grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .val-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      border-top: 3px solid #C4631A;
+    }
+
+    .val-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .val-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #4A3728;
+      margin-bottom: 0.4rem;
+    }
+
+    .val-card p {
+      font-size: 0.875rem;
+      color: #7A6654;
+      line-height: 1.65;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #0A0806;
+      color: white;
+      padding: 3rem 5% 2rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #C4631A;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #C4631A;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: #C4631A;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .values-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .story-img-2 {
+        margin-left: 0;
+      }
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      .s-title {
+        font-size: 1.8rem;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-col ul {
+        text-align: center;
+      }
+    }
+
     @media (max-width: 480px) {
-      .values-grid { grid-template-columns: 1fr; }
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
-<nav class="site-nav">
-  <a href="index.html" class="nav-brand"><span class="brand-icon">🪨</span> The Akols</a>
+<!-- Navigation -->
+<nav>
+  <a href="index.html" class="logo">🪨 The Akols</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -148,69 +446,33 @@
     <li><a href="events.html">Events</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="heritage.html">Nyero Heritage</a>
-  <a href="family.html">Family</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="events.html">Events</a>
-  <a href="contact.html">Contact</a>
-</div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-<!-- ══ PAGE HERO ══ -->
-<div class="page-hero">
-  <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="rgba(196,99,26,0.9)" fill="none">
-      <circle cx="200" cy="200" r="14" fill="rgba(196,99,26,.3)" stroke-width="0"/>
-      <circle cx="200" cy="200" r="35" stroke-width="2"/><circle cx="200" cy="200" r="65" stroke-width="1.6"/>
-      <circle cx="200" cy="200" r="98" stroke-width="1.3"/><circle cx="200" cy="200" r="135" stroke-width="1"/>
-      <circle cx="200" cy="200" r="175" stroke-width="0.7"/>
-    </g>
-  </svg>
-  <div class="page-hero-inner">
-    <div class="page-breadcrumb"><a href="index.html">Home</a><span>›</span>About Us</div>
-    <h1 class="page-title">Our <em>Story</em></h1>
-    <p class="page-subtitle">Three generations of Akols, rooted in the red soils of Teso, shaped by community, faith, and the ancient land of Nyero Subcounty.</p>
-  </div>
+<!-- Page Hero -->
+<div class="page-header">
+  <div class="page-breadcrumb"><a href="index.html">Home</a> › About Us</div>
+  <h1>Our <em>Story</em></h1>
+  <p>Three generations of Akols, rooted in the red soils of Teso, shaped by community, faith, and the ancient land of Nyero Subcounty.</p>
 </div>
 
-<!-- ══ STORY ══ -->
-<section class="section" style="background:var(--white);">
+<!-- Story Section -->
+<section class="section" style="background:white;">
   <div class="section-inner">
     <div class="story-grid">
       <div class="story-img-wrap fade-up">
         <div class="story-img">
-<<<<<<< HEAD
-          <!-- LOCAL IMAGE: Family portrait - Update the path to match your actual image location -->
-          <img src="img/family0.png" alt="Akol family portrait" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:360px;\'><span class=\'ph-icon\'>👨‍👩‍👧‍👦</span><span class=\'ph-label\'>Family Portrait</span><span class=\'ph-id\'>img/family0.png</span></div>'">
-        </div>
-        <div class="story-img-2">
-          <!-- LOCAL IMAGE: Homestead - Update the path to match your actual image location -->
-          <img src="img/home.png" alt="Akol homestead, Nyero Subcounty" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:220px;\'><span class=\'ph-icon\'>🏡</span><span class=\'ph-label\'>Akol Homestead, Nyero Subcounty</span><span class=\'ph-id\'>img/home.png</span></div>'">
-=======
-          <!-- IMAGE SLOT: about-family
-               Replace with: <img src="img/about-family.jpg" alt="Akol family portrait"> -->
-          <div class="img-placeholder" style="height:100%;min-height:360px;">
+          <div class="img-placeholder">
             <span class="ph-icon">👨‍👩‍👧‍👦</span>
-            <span class="ph-label">Family Portrait</span>
-            <span class="ph-id">img/about-family.jpg</span>
+            <span class="ph-label">Akol Family Portrait</span>
+            <span class="ph-id">Add your family photo here</span>
           </div>
         </div>
         <div class="story-img-2">
-          <!-- IMAGE SLOT: about-homestead
-               Replace with: <img src="img/about-homestead.jpg" alt="Akol homestead, Nyero Subcounty"> -->
-          <div class="img-placeholder" style="height:100%;min-height:220px;">
+          <div class="img-placeholder">
             <span class="ph-icon">🏡</span>
             <span class="ph-label">Akol Homestead, Nyero Subcounty</span>
-            <span class="ph-id">img/about-homestead.jpg</span>
+            <span class="ph-id">Add your homestead photo here</span>
           </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
         <div class="quote-block">
           <p>"Wherever we go, Kumi is where we come back to."</p>
@@ -235,8 +497,8 @@
   </div>
 </section>
 
-<!-- ══ TIMELINE ══ -->
-<section class="section" style="background:var(--bg);">
+<!-- Timeline Section -->
+<section class="section" style="background:#FBF5EC;">
   <div class="section-inner">
     <span class="s-label fade-up">Our History</span>
     <h2 class="s-title fade-up">The Akol Family Timeline</h2>
@@ -258,7 +520,7 @@
       <div class="tl-item fade-up delay-2">
         <div class="tl-year"><div class="tl-dot"></div><div class="tl-y-label">1995</div></div>
         <div class="tl-content">
-          <h3>Stephen &amp; Immaculate Are Married</h3>
+          <h3>Stephen & Immaculate Are Married</h3>
           <p>Stephen weds Immaculate Adong at St. Peter's Nyero parish. Immaculate, a trained nurse from Soroti, joins the Kumi Hospital staff and begins what will become a 30-year career in community health.</p>
         </div>
       </div>
@@ -287,8 +549,8 @@
   </div>
 </section>
 
-<!-- ══ VALUES ══ -->
-<section class="section" style="background:var(--white);">
+<!-- Values Section -->
+<section class="section" style="background:white;">
   <div class="section-inner">
     <span class="s-label fade-up">What We Stand For</span>
     <h2 class="s-title fade-up">Our Family Values</h2>
@@ -310,7 +572,7 @@
       </div>
       <div class="val-card fade-up">
         <div class="val-icon">🙏</div>
-        <h3>Faith &amp; Community</h3>
+        <h3>Faith & Community</h3>
         <p>St. Peter's Nyero has been the family's spiritual home for three generations. Service to the community is as natural as breathing.</p>
       </div>
       <div class="val-card fade-up delay-1">
@@ -327,136 +589,48 @@
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- Footer -->
 <footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-brand">
-            <div class="brand-name">🪨 The Akol Family</div>
-<<<<<<< HEAD
-            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
-=======
-            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proudly Iteso. Neighbours of Uganda's oldest rock art.</p>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-        </div>
-        
-        <div class="footer-col">
-            <h4>Pages</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="heritage.html">Nyero Heritage</a></li>
-                <li><a href="family.html">Our Family</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-col">
-            <h4>More</h4>
-            <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-col">
-            <h4>Location</h4>
-            <ul>
-                <li><a href="heritage.html">Nyero Subcounty</a></li>
-                <li><a href="contact.html">Kumi Municipality</a></li>
-                <li><a href="contact.html">Kumi District</a></li>
-                <li><a href="heritage.html">Eastern Uganda</a></li>
-            </ul>
-        </div>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="brand-name">🪨 The Akol Family</div>
+      <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
     </div>
     
-    <div class="footer-bottom">
-        <p>&copy; 2026 The Akol Family — Nyero Subcounty, Kumi District, Eastern Uganda.</p>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="heritage.html">Nyero Heritage</a></li>
+        <li><a href="family.html">Our Family</a></li>
+      </ul>
     </div>
+    
+    <div class="footer-col">
+      <h4>More</h4>
+      <ul>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Location</h4>
+      <ul>
+        <li><a href="heritage.html">Nyero Subcounty</a></li>
+        <li><a href="contact.html">Kumi Municipality</a></li>
+        <li><a href="contact.html">Kumi District</a></li>
+        <li><a href="heritage.html">Eastern Uganda</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2026 The Akol Family — Nyero Subcounty, Kumi District, Eastern Uganda.</p>
+  </div>
 </footer>
 
-<style>
-    .site-footer {
-        background: #0A0806;
-        color: white;
-        padding: 3rem 5% 2rem;
-        margin-top: 0;
-    }
-<<<<<<< HEAD
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 2rem;
-    }
-    
-    .brand-name {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #C4631A;
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-brand p {
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.5);
-        line-height: 1.6;
-    }
-    
-    .footer-col h4 {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #C4631A;
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
-    }
-    
-    .footer-col ul {
-        list-style: none;
-        padding: 0;
-    }
-    
-    .footer-col li {
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-col a {
-        color: rgba(255,255,255,0.5);
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: color 0.3s;
-    }
-    
-    .footer-col a:hover {
-        color: #C4631A;
-    }
-    
-    .footer-bottom {
-        max-width: 1200px;
-        margin: 2rem auto 0;
-        padding-top: 1.5rem;
-        text-align: center;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        font-size: 0.75rem;
-        color: rgba(255,255,255,0.3);
-    }
-    
-    @media (max-width: 768px) {
-        .footer-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 1.5rem;
-        }
-        
-        .footer-col ul {
-            text-align: center;
-        }
-    }
-</style>
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-
-<script src="js/main.js"></script>
 </body>
 </html>
