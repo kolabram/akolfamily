@@ -4,139 +4,492 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nyero Heritage — The Akol Family</title>
-  <link rel="stylesheet" href="css/style.css"/>
   <style>
-    /* ── HERITAGE SPECIFIC ── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #FBF5EC;
+      color: #4A3728;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(251, 245, 236, 0.97);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #9E3D0F;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4A3728;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #C4631A;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #0D1006 0%, #1A1408 50%, #2E1A08 100%);
+      color: white;
+      padding: 120px 5% 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 em {
+      color: #C4631A;
+      font-style: italic;
+    }
+
+    .page-header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.8;
+    }
+
+    .page-breadcrumb {
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .page-breadcrumb a {
+      color: #C4631A;
+      text-decoration: none;
+    }
+
+    /* Section */
+    .section {
+      padding: 80px 5%;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .s-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #C4631A;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .s-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #4A3728;
+      margin-bottom: 1.5rem;
+    }
+
+    .s-body {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #7A6654;
+    }
+
+    /* Heritage Intro */
     .heritage-intro {
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 5rem; align-items: center;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
+      align-items: center;
     }
+
     .heritage-main-img {
-      aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #4A2A10;
     }
-<<<<<<< HEAD
+
     .heritage-main-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-    .hfact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin-top: 2rem;
-    }
-    .hf {
-      background: var(--rock-dark); border-radius: var(--radius);
-      padding: 1.2rem; border: 1px solid rgba(196,99,26,0.22);
-    }
-    .hf .num {
-      font-family: var(--font-display);
-      font-size: 2rem; font-weight: 700; color: var(--terracotta);
-      display: block; line-height: 1; margin-bottom: 0.3rem;
-    }
-    .hf p { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
 
-    /* ── SHELTERS ── */
-    .shelters-wrap { margin-top: 3rem; }
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      background: linear-gradient(135deg, #C4631A, #9E3D0F);
+    }
+
+    .ph-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .ph-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hfact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .hf {
+      background: #2E1A08;
+      border-radius: 12px;
+      padding: 1.2rem;
+      border: 1px solid rgba(196,99,26,0.22);
+    }
+
+    .hf .num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #C4631A;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .hf p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* Shelters */
+    .shelters-wrap {
+      margin-top: 3rem;
+    }
+
     .shelter-card {
-      background: var(--white); border-radius: var(--radius);
-      overflow: hidden; margin-bottom: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
       box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-      display: grid; grid-template-columns: 320px 1fr;
+      display: grid;
+      grid-template-columns: 320px 1fr;
     }
-    .shelter-card:nth-child(even) { grid-template-columns: 1fr 320px; }
-    .shelter-card:nth-child(even) .shelter-img { order: 2; }
-    .shelter-card:nth-child(even) .shelter-text { order: 1; }
-<<<<<<< HEAD
-    .shelter-img { 
-      overflow: hidden; 
+
+    .shelter-card:nth-child(even) {
+      grid-template-columns: 1fr 320px;
+    }
+
+    .shelter-card:nth-child(even) .shelter-img {
+      order: 2;
+    }
+
+    .shelter-card:nth-child(even) .shelter-text {
+      order: 1;
+    }
+
+    .shelter-img {
+      overflow: hidden;
       min-height: 260px;
+      background: #4A2A10;
     }
+
     .shelter-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-=======
-    .shelter-img { overflow: hidden; min-height: 260px; }
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-    .shelter-text { padding: 2.5rem; }
+
+    .shelter-text {
+      padding: 2.5rem;
+    }
+
     .shelter-num-badge {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--ochre); color: white;
-      font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #C4631A;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
       margin-bottom: 1rem;
     }
+
     .shelter-text h3 {
-      font-family: var(--font-display); font-size: 1.5rem;
-      font-weight: 700; color: var(--stone); margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #4A3728;
+      margin-bottom: 0.5rem;
     }
+
     .shelter-text .shelter-sub {
-      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ochre); margin-bottom: 1rem; font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C4631A;
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
-    .shelter-text p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
-    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+    .shelter-text p {
+      font-size: 0.9rem;
+      color: #7A6654;
+      line-height: 1.75;
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
     .tag {
-      padding: 0.25rem 0.75rem; border-radius: 2px;
-      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
-      font-weight: 600; background: rgba(196,99,26,0.1); color: var(--ochre);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: rgba(196,99,26,0.1);
+      color: #C4631A;
       border: 1px solid rgba(196,99,26,0.25);
     }
 
-    /* ── VISIT INFO ── */
+    /* Visit Info */
     .visit-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem; margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
     }
-    .vi-card {
-      background: rgba(255,255,255,0.05); border-radius: var(--radius);
-      padding: 1.5rem; border: 1px solid rgba(196,99,26,0.2);
-      display: flex; gap: 1rem; align-items: flex-start;
-    }
-    .vi-icon {
-      font-size: 1.5rem; flex-shrink: 0;
-      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-      background: rgba(196,99,26,0.15); border-radius: var(--radius);
-    }
-    .vi-info h4 { font-size: 0.85rem; font-weight: 600; color: var(--sand); margin-bottom: 0.3rem; }
-    .vi-info p  { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
 
-    /* SVG Illustration full-width */
-    .nyero-svg-panel {
-      background: var(--rock-dark); border-radius: var(--radius);
-      padding: 2.5rem; text-align: center;
+    .vi-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(196,99,26,0.2);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
     }
-    .nyero-svg-panel p {
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25); margin-top: 1.25rem;
+
+    .vi-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(196,99,26,0.15);
+      border-radius: 12px;
     }
+
+    .vi-info h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #F5E6D3;
+      margin-bottom: 0.3rem;
+    }
+
+    .vi-info p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.55;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .btn-outline {
+      border: 2px solid #C4631A;
+      color: #C4631A;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #C4631A;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #0A0806;
+      color: white;
+      padding: 3rem 5% 2rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #C4631A;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #C4631A;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: #C4631A;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
 
     @media (max-width: 900px) {
       .shelter-card,
-      .shelter-card:nth-child(even) { grid-template-columns: 1fr; }
+      .shelter-card:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
       .shelter-card:nth-child(even) .shelter-img,
-      .shelter-card:nth-child(even) .shelter-text { order: unset; }
-      .shelter-img { min-height: 220px; }
+      .shelter-card:nth-child(even) .shelter-text {
+        order: unset;
+      }
+      .shelter-img {
+        min-height: 220px;
+      }
     }
+
     @media (max-width: 768px) {
-      .heritage-intro { grid-template-columns: 1fr; gap: 2rem; }
-      .visit-grid { grid-template-columns: 1fr; }
+      .nav-links {
+        display: none;
+      }
+      .heritage-intro {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .visit-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      .s-title {
+        font-size: 1.8rem;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-col ul {
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
-<<<<<<< HEAD
-=======
-<body>
-
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-<!-- ══ NAV ══ -->
-<nav class="site-nav">
-  <a href="index.html" class="nav-brand"><span class="brand-icon">🪨</span> The Akols</a>
+<!-- Navigation -->
+<nav>
+  <a href="index.html" class="logo">🪨 The Akols</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -146,44 +499,17 @@
     <li><a href="events.html">Events</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="heritage.html">Nyero Heritage</a>
-  <a href="family.html">Family</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="events.html">Events</a>
-  <a href="contact.html">Contact</a>
-</div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-<!-- ══ PAGE HERO ══ -->
-<div class="page-hero" style="background: linear-gradient(160deg, #0D1006 0%, #1A1408 50%, #2E1A08 100%);">
-  <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="rgba(196,99,26,0.9)" fill="none">
-      <circle cx="200" cy="200" r="14" fill="rgba(196,99,26,.3)" stroke-width="0"/>
-      <circle cx="200" cy="200" r="35" stroke-width="2.2"/><circle cx="200" cy="200" r="65" stroke-width="1.8"/>
-      <circle cx="200" cy="200" r="98" stroke-width="1.4"/><circle cx="200" cy="200" r="135" stroke-width="1"/>
-      <circle cx="200" cy="200" r="175" stroke-width="0.7"/>
-    </g>
-    <g stroke="rgba(196,99,26,.5)" fill="none" stroke-width="1.8">
-      <ellipse cx="200" cy="78" rx="45" ry="16" transform="rotate(12,200,78)"/>
-      <ellipse cx="322" cy="200" rx="42" ry="15" transform="rotate(88,322,200)"/>
-    </g>
-  </svg>
-  <div class="page-hero-inner">
-    <div class="page-breadcrumb"><a href="index.html">Home</a><span>›</span>Nyero Heritage</div>
-    <h1 class="page-title">Nyero Rock<br/><em>Paintings</em></h1>
-    <p class="page-subtitle">Our neighbour, our pride — the most important prehistoric rock art in Uganda, just 8 km from the Akol homestead in Nyero Subcounty.</p>
-  </div>
+<!-- Page Hero -->
+<div class="page-header">
+  <div class="page-breadcrumb"><a href="index.html">Home</a> › Nyero Heritage</div>
+  <h1>Nyero Rock<br/><em>Paintings</em></h1>
+  <p>Our neighbour, our pride — the most important prehistoric rock art in Uganda, just 8 km from the Akol homestead in Nyero Subcounty.</p>
 </div>
 
-<!-- ══ HERITAGE INTRO ══ -->
-<section class="section" style="background:var(--white);">
+<!-- Heritage Intro Section -->
+<section class="section" style="background:white;">
   <div class="section-inner">
     <div class="heritage-intro">
       <div class="fade-up">
@@ -199,18 +525,7 @@
       </div>
       <div class="fade-up delay-1">
         <div class="heritage-main-img">
-<<<<<<< HEAD
-          <!-- Using rock.png as the main heritage image -->
-          <img src="img/rock.png" alt="Nyero Rock Paintings - Main Panel" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:300px;\'><span class=\'ph-icon\'>🪨</span><span class=\'ph-label\'>Nyero 2 — Main Shelter Panel</span><span class=\'ph-id\'>img/rock.png</span></div>'">
-=======
-          <!-- IMAGE SLOT: heritage-nyero2
-               Replace with: <img src="img/heritage-nyero2.jpg" alt="Nyero 2 main panel with concentric circles"> -->
-          <div class="img-placeholder" style="height:100%;min-height:300px;">
-            <span class="ph-icon">🪨</span>
-            <span class="ph-label">Nyero 2 — Main Shelter Panel</span>
-            <span class="ph-id">img/heritage-nyero2.jpg</span>
-          </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
+          <img src="img/rock.png" alt="Nyero Rock Paintings - Main Panel" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\'><span class=\'ph-icon\'>🪨</span><span class=\'ph-label\'>Nyero 2 — Main Shelter Panel</span><span class=\'ph-id\'>Add rock art photo</span></div>'">
         </div>
         <div class="hfact-grid" style="margin-top:1rem;">
           <div class="hf"><span class="num">6</span><p>Rock shelters across the Nyero inselberg</p></div>
@@ -223,80 +538,8 @@
   </div>
 </section>
 
-<!-- ══ SVG ART PANEL ══ -->
-<section class="section" style="background:var(--bg);">
-  <div class="section-inner">
-    <span class="s-label fade-up">Rock Art Recreation</span>
-    <h2 class="s-title fade-up">The Nyero Paintings — Illustrated</h2>
-    <p class="s-body fade-up" style="margin-bottom:2rem;">An artistic SVG recreation of the Nyero 2 main panel, showing the characteristic concentric circles, canoe shapes, and geometric motifs painted in red pigment on granite.</p>
-    <div class="nyero-svg-panel fade-up">
-      <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;">
-        <text x="16" y="22" fill="rgba(196,99,26,0.5)" font-size="11" font-family="monospace" letter-spacing="2">NYERO 2 — MAIN PANEL RECREATION · KUMI DISTRICT, EASTERN UGANDA</text>
-        <!-- Rock surface bg -->
-        <rect width="700" height="380" fill="rgba(46,33,24,0.5)" rx="2"/>
-        <!-- Large concentric circles (centre-left) -->
-        <g stroke="#C4631A" fill="none" opacity="0.88">
-          <circle cx="250" cy="200" r="16" fill="rgba(196,99,26,0.4)" stroke-width="0"/>
-          <circle cx="250" cy="200" r="34" stroke-width="2.8"/>
-          <circle cx="250" cy="200" r="58" stroke-width="2.3"/>
-          <circle cx="250" cy="200" r="84" stroke-width="1.9"/>
-          <circle cx="250" cy="200" r="112" stroke-width="1.5"/>
-          <circle cx="250" cy="200" r="142" stroke-width="1.1"/>
-        </g>
-        <!-- Second circles (upper right) -->
-        <g stroke="#C4631A" fill="none" opacity="0.65">
-          <circle cx="510" cy="110" r="11" fill="rgba(196,99,26,.3)" stroke-width="0"/>
-          <circle cx="510" cy="110" r="26" stroke-width="2.2"/>
-          <circle cx="510" cy="110" r="46" stroke-width="1.8"/>
-          <circle cx="510" cy="110" r="68" stroke-width="1.4"/>
-        </g>
-        <!-- Third set - white (Nyero 1/3 style) -->
-        <g stroke="rgba(255,255,255,0.6)" fill="none" opacity="0.7">
-          <circle cx="610" cy="295" r="9" fill="rgba(255,255,255,.2)" stroke-width="0"/>
-          <circle cx="610" cy="295" r="21" stroke-width="1.8"/>
-          <circle cx="610" cy="295" r="36" stroke-width="1.4"/>
-          <circle cx="610" cy="295" r="52" stroke-width="1"/>
-        </g>
-        <!-- Canoe shapes -->
-        <g stroke="#C4631A" fill="none" stroke-width="2.2" opacity="0.75">
-          <ellipse cx="560" cy="240" rx="54" ry="19" transform="rotate(12,560,240)"/>
-          <ellipse cx="90"  cy="120" rx="46" ry="16" transform="rotate(-8,90,120)"/>
-          <ellipse cx="440" cy="330" rx="50" ry="17" transform="rotate(5,440,330)"/>
-        </g>
-        <!-- U-shapes -->
-        <g stroke="rgba(196,99,26,0.65)" fill="none" stroke-width="2">
-          <path d="M 50 250 Q 50 280 68 280 Q 86 280 86 250"/>
-          <path d="M 628 148 Q 628 172 645 172 Q 662 172 662 148"/>
-        </g>
-        <!-- Sausage / divided shapes -->
-        <g stroke="rgba(196,99,26,0.55)" fill="none" stroke-width="1.8">
-          <rect x="660" y="60"  width="24" height="60" rx="12"/>
-          <line x1="660" y1="88"  x2="684" y2="88" stroke-width="1.3"/>
-          <rect x="16"  y="270" width="22" height="54" rx="11"/>
-          <line x1="16"  y1="296" x2="38"  y2="296" stroke-width="1.3"/>
-        </g>
-        <!-- Dot patterns -->
-        <g fill="rgba(196,99,26,0.75)">
-          <circle cx="380" cy="55" r="4.5"/><circle cx="400" cy="46" r="3.5"/>
-          <circle cx="420" cy="58" r="4"/><circle cx="440" cy="48" r="3.5"/>
-          <circle cx="460" cy="60" r="4"/>
-        </g>
-        <!-- Lines/strokes -->
-        <g stroke="rgba(196,99,26,0.45)" stroke-width="1.5" fill="none">
-          <line x1="140" y1="340" x2="180" y2="340"/><line x1="185" y1="335" x2="220" y2="335"/>
-          <line x1="225" y1="342" x2="255" y2="342"/>
-        </g>
-        <text x="16" y="368" fill="rgba(255,255,255,0.18)" font-size="9" font-family="monospace">
-          Red &amp; white pigments on granite · Est. before 1250 CE · Nyero Town Council, Kumi District
-        </text>
-      </svg>
-      <p>Artistic recreation of rock art motifs — concentric circles, canoes, U-shapes &amp; dots</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SIX SHELTERS ══ -->
-<section class="section" style="background:var(--white);">
+<!-- Six Shelters Section -->
+<section class="section" style="background:#FBF5EC;">
   <div class="section-inner">
     <span class="s-label fade-up">The Six Shelters</span>
     <h2 class="s-title fade-up">Exploring Nyero 1–6</h2>
@@ -305,18 +548,7 @@
       <!-- NYERO 1 -->
       <div class="shelter-card fade-up">
         <div class="shelter-img">
-<<<<<<< HEAD
-          <!-- Using painting0.png for Nyero 1 -->
-          <img src="img/painting0.png" alt="Nyero 1 shelter - White Circles" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:260px;background:linear-gradient(145deg,#1A0E08,#4A2010);\'><span class=\'ph-icon\'>⭕</span><span class=\'ph-label\'>Nyero 1 — White Circles Shelter</span><span class=\'ph-id\'>img/painting0.png</span></div>'">
-=======
-          <!-- IMAGE SLOT: heritage-nyero1
-               Replace with: <img src="img/heritage-nyero1.jpg" alt="Nyero 1 shelter"> -->
-          <div class="img-placeholder" style="height:100%;min-height:260px;background:linear-gradient(145deg,#1A0E08,#4A2010);">
-            <span class="ph-icon">⭕</span>
-            <span class="ph-label">Nyero 1 — White Circles Shelter</span>
-            <span class="ph-id">img/heritage-nyero1.jpg</span>
-          </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
+          <img src="img/painting0.png" alt="Nyero 1 shelter - White Circles" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\'><span class=\'ph-icon\'>⭕</span><span class=\'ph-label\'>Nyero 1 — White Circles Shelter</span></div>'">
         </div>
         <div class="shelter-text">
           <div class="shelter-num-badge">1</div>
@@ -335,18 +567,7 @@
       <!-- NYERO 2 -->
       <div class="shelter-card fade-up">
         <div class="shelter-img">
-<<<<<<< HEAD
-          <!-- Using rock.png for Nyero 2 as well -->
-          <img src="img/rock.png" alt="Nyero 2 shelter - Main Shelter" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:260px;background:linear-gradient(145deg,#2E1A08,#6B3A1F);\'><span class=\'ph-icon\'>🪨</span><span class=\'ph-label\'>Nyero 2 — Main Shelter</span><span class=\'ph-id\'>img/rock.png</span></div>'">
-=======
-          <!-- IMAGE SLOT: heritage-nyero2-shelter
-               Replace with: <img src="img/heritage-nyero2-shelter.jpg" alt="Nyero 2 shelter exterior"> -->
-          <div class="img-placeholder" style="height:100%;min-height:260px;background:linear-gradient(145deg,#2E1A08,#6B3A1F);">
-            <span class="ph-icon">🪨</span>
-            <span class="ph-label">Nyero 2 — Main Shelter</span>
-            <span class="ph-id">img/heritage-nyero2-shelter.jpg</span>
-          </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
+          <img src="img/rock.png" alt="Nyero 2 shelter - Main Shelter" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\'><span class=\'ph-icon\'>🪨</span><span class=\'ph-label\'>Nyero 2 — Main Shelter</span></div>'">
         </div>
         <div class="shelter-text">
           <div class="shelter-num-badge">2</div>
@@ -366,18 +587,7 @@
       <!-- NYERO 3 -->
       <div class="shelter-card fade-up">
         <div class="shelter-img">
-<<<<<<< HEAD
-          <!-- Using painting0.png for Nyero 3 -->
-          <img src="img/painting0.png" alt="Nyero 3 shelter - Prayer Shelter" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:260px;background:linear-gradient(145deg,#1A2A08,#3A5010);\'><span class=\'ph-icon\'>🙏</span><span class=\'ph-label\'>Nyero 3 — Prayer Shelter</span><span class=\'ph-id\'>img/painting0.png</span></div>'">
-=======
-          <!-- IMAGE SLOT: heritage-nyero3
-               Replace with: <img src="img/heritage-nyero3.jpg" alt="Nyero 3 prayer shelter"> -->
-          <div class="img-placeholder" style="height:100%;min-height:260px;background:linear-gradient(145deg,#1A2A08,#3A5010);">
-            <span class="ph-icon">🙏</span>
-            <span class="ph-label">Nyero 3 — Prayer Shelter</span>
-            <span class="ph-id">img/heritage-nyero3.jpg</span>
-          </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
+          <img src="img/painting0.png" alt="Nyero 3 shelter - Prayer Shelter" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\'><span class=\'ph-icon\'>🙏</span><span class=\'ph-label\'>Nyero 3 — Prayer Shelter</span></div>'">
         </div>
         <div class="shelter-text">
           <div class="shelter-num-badge">3</div>
@@ -394,18 +604,17 @@
       </div>
     </div>
 
-    <p class="s-body" style="margin-top:1rem;font-style:italic;color:var(--muted);">
+    <p class="s-body" style="margin-top:1rem; font-style:italic; color:#7A6654;">
       Nyero 4, 5, and 6 are smaller shelters on the south-western and western sides of the inselberg, each with additional geometric and red finger-painted motifs. A guided tour at the entrance gate covers all six.
     </p>
   </div>
 </section>
 
-<!-- ══ VISIT INFORMATION ══ -->
-<section class="section" style="background:var(--rock-dark);position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;opacity:0.04;background:url('data:image/svg+xml,%3Csvg width=4 height=4 xmlns=http://www.w3.org/2000/svg%3E%3Crect width=1 height=1 fill=white/%3E%3C/svg%3E');"></div>
-  <div class="section-inner" style="position:relative;z-index:1;">
-    <span class="s-label fade-up" style="color:var(--terracotta);">Practical Information</span>
-    <h2 class="s-title fade-up" style="color:var(--sand);">Plan Your Visit</h2>
+<!-- Visit Information Section -->
+<section class="section" style="background:#2E1A08; position:relative;">
+  <div class="section-inner" style="position:relative; z-index:1;">
+    <span class="s-label fade-up" style="color:#C4631A;">Practical Information</span>
+    <h2 class="s-title fade-up" style="color:#F5E6D3;">Plan Your Visit</h2>
     <p class="s-body fade-up" style="color:rgba(255,255,255,0.5);">The Nyero Rock Paintings are open daily. A guided tour is mandatory and included. As a local Akol family, we are happy to give visiting friends and relatives tips for the best experience.</p>
     <div class="visit-grid">
       <div class="vi-card fade-up"><div class="vi-icon">📍</div><div class="vi-info"><h4>Location</h4><p>8 km west of Kumi town on the Kumi–Ngora road. 1 km west of Nyero village. Coordinates: 1°28'18"N 33°50'46"E</p></div></div>
@@ -418,140 +627,48 @@
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
-<<<<<<< HEAD
-=======
-<!-- ══ FOOTER ══ -->
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
+<!-- Footer -->
 <footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-brand">
-            <div class="brand-name">🪨 The Akol Family</div>
-<<<<<<< HEAD
-            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
-=======
-            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proudly Iteso. Neighbours of Uganda's oldest rock art.</p>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-        </div>
-        
-        <div class="footer-col">
-            <h4>Pages</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="heritage.html">Nyero Heritage</a></li>
-                <li><a href="family.html">Our Family</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-col">
-            <h4>More</h4>
-            <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-col">
-            <h4>Location</h4>
-            <ul>
-                <li><a href="heritage.html">Nyero Subcounty</a></li>
-                <li><a href="contact.html">Kumi Municipality</a></li>
-                <li><a href="contact.html">Kumi District</a></li>
-                <li><a href="heritage.html">Eastern Uganda</a></li>
-            </ul>
-        </div>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="brand-name">🪨 The Akol Family</div>
+      <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
     </div>
     
-    <div class="footer-bottom">
-        <p>&copy; 2026 The Akol Family — Nyero Subcounty, Kumi District, Eastern Uganda.</p>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="heritage.html">Nyero Heritage</a></li>
+        <li><a href="family.html">Our Family</a></li>
+      </ul>
     </div>
+    
+    <div class="footer-col">
+      <h4>More</h4>
+      <ul>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Location</h4>
+      <ul>
+        <li><a href="heritage.html">Nyero Subcounty</a></li>
+        <li><a href="contact.html">Kumi Municipality</a></li>
+        <li><a href="contact.html">Kumi District</a></li>
+        <li><a href="heritage.html">Eastern Uganda</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2026 The Akol Family — Nyero Subcounty, Kumi District, Eastern Uganda.</p>
+  </div>
 </footer>
 
-<style>
-    .site-footer {
-        background: #0A0806;
-        color: white;
-        padding: 3rem 5% 2rem;
-        margin-top: 0;
-    }
-<<<<<<< HEAD
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 2rem;
-    }
-    
-    .brand-name {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #C4631A;
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-brand p {
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.5);
-        line-height: 1.6;
-    }
-    
-    .footer-col h4 {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #C4631A;
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
-    }
-    
-    .footer-col ul {
-        list-style: none;
-        padding: 0;
-    }
-    
-    .footer-col li {
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-col a {
-        color: rgba(255,255,255,0.5);
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: color 0.3s;
-    }
-    
-    .footer-col a:hover {
-        color: #C4631A;
-    }
-    
-    .footer-bottom {
-        max-width: 1200px;
-        margin: 2rem auto 0;
-        padding-top: 1.5rem;
-        text-align: center;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        font-size: 0.75rem;
-        color: rgba(255,255,255,0.3);
-    }
-    
-    @media (max-width: 768px) {
-        .footer-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 1.5rem;
-        }
-        
-        .footer-col ul {
-            text-align: center;
-        }
-    }
-</style>
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
-
-<script src="js/main.js"></script>
 </body>
 </html>
