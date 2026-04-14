@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Config — The Akol Family</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #FBF5EC; color: #4A3728; padding: 2rem; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        h1 { color: #9E3D0F; margin-bottom: 1rem; }
+        pre { background: #f4f1ea; padding: 1rem; border-radius: 10px; overflow: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>config.php (HTML copy)</h1>
+        <pre>&lt;?php
+$host = "sql201.infinityfree.com";
+$user = "if0_41644639";
+$pass = "ezqe57AQZHNCSbv";
+$dbname = "if0_41644639_akols_family";
+
+define('DB_CHARSET', 'utf8mb4');
+
+// Site settings
+define('SITE_NAME', 'Akol Family');
+define('SITE_URL', ''); // Leave empty if in root folder
+
+// Create connection
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Set charset
+mysqli_set_charset($conn, DB_CHARSET);
+
+// Set timezone
+date_default_timezone_set('Africa/Kampala');
+?&gt;</pre>
+    </div>
+</body>
+</html>
