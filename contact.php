@@ -381,15 +381,15 @@
 
 <!-- Navigation -->
 <nav>
-    <a href="index.html" class="logo">🪨 The Akols</a>
+    <a href="index.php" class="logo">🪨 The Akols</a>
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="heritage.html">Heritage</a></li>
-        <li><a href="family.html">Family</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="heritage.php">Heritage</a></li>
+        <li><a href="family.php">Family</a></li>
+        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="events.php">Events</a></li>
+        <li><a href="contact.php">Contact</a></li>
     </ul>
 </nav>
 
@@ -399,37 +399,6 @@
     <p>Have a message for the family, want to reconnect with relatives, or planning a visit to Kumi and Nyero? We would love to hear from you.</p>
 </div>
 
-<<<<<<< HEAD
-
-
-<div class="contact-section">
-    
-        <div class="success-message">
-            <div class="checkmark">✓</div>
-            <h2>Thank You, !</h2>
-            <p>Your message has been received with gratitude. Our family will respond to you within 2-3 business days.</p>
-            <p style="margin-top: 10px; color: #C4631A;">🪨 May the ancestors guide your path.</p>
-            <a href="contact.html" class="submit-btn" style="display: inline-block; width: auto; padding: 12px 30px;">Send Another Message</a>
-        </div>
-    
-        
-            <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                ⚠️ 
-            </div>
-        
-        
-        <div class="contact-wrapper">
-            <!-- Contact Information -->
-            <div class="contact-info">
-                <h3>📍 Visit Nyero</h3>
-                
-                <div class="info-item">
-                    <div class="info-icon">📍</div>
-                    <div>
-                        <h4>Our Location</h4>
-                        <p>Nyero Subcounty, Kumi Municipality<br>Eastern Uganda</p>
-                    </div>
-=======
 <div class="contact-section" id="contact-section">
     <div class="contact-wrapper">
         <!-- Contact Information -->
@@ -442,7 +411,6 @@
                     <h4>Our Location</h4>
                     <p>Nyero Subcounty, Kumi Municipality<br>Eastern Uganda</p>
                 </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                 </div>
                 
                 <div class="info-item">
@@ -481,69 +449,40 @@
                 <h3>Send Us a Message</h3>
                 <p>We'd love to hear from you. Fill out the form and we'll get back to you soon.</p>
                 
-<<<<<<< HEAD
-                <form action="contact.html" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" placeholder="Your full name" value="">
-=======
                 <form id="contact-form" onsubmit="handleFormSubmit(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Full Name</label>
                             <input type="text" name="name" id="name" placeholder="Your full name">
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                         </div>
                         
                         <div class="form-group">
                             <label>Email Address <span class="required">*</span></label>
-<<<<<<< HEAD
-                            <input type="email" name="email" placeholder="your@email.com" required value="">
-=======
                             <input type="email" name="email" id="email" placeholder="your@email.com" required>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label>Phone Number</label>
-<<<<<<< HEAD
-                            <input type="tel" name="phone" placeholder="+256 XXX XXX XXX" value="">
-=======
                             <input type="tel" name="phone" id="phone" placeholder="+256 XXX XXX XXX">
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                         </div>
                         
                         <div class="form-group">
                             <label>Subject</label>
-<<<<<<< HEAD
-                            <select name="subject">
-                                <option value="">Select a subject</option>
-                                <option value="visit" >Plan a Visit to Nyero</option>
-                                <option value="heritage" >Heritage Research</option>
-                                <option value="event" >Family Event Inquiry</option>
-                                <option value="general" >General Question</option>
-=======
                             <select name="subject" id="subject">
                                 <option value="">Select a subject</option>
                                 <option value="visit">Plan a Visit to Nyero</option>
                                 <option value="heritage">Heritage Research</option>
                                 <option value="event">Family Event Inquiry</option>
                                 <option value="general">General Question</option>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                             </select>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label>Message <span class="required">*</span></label>
-<<<<<<< HEAD
-                        <textarea name="message" placeholder="Tell us about your inquiry, visit plans, or family connection..." rows="5" required></textarea>
-=======
                         <textarea name="message" id="message" placeholder="Tell us about your inquiry, visit plans, or family connection..." rows="5" required></textarea>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                     </div>
                     
                     <button type="submit" class="submit-btn">✉️ Send Message</button>
@@ -578,12 +517,7 @@
                 <br>📍 Coordinates: 1°28'18"N 33°50'46"E
             </div>
         </div>
-<<<<<<< HEAD
-    
-</div>
-=======
     </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 
 <!-- Footer -->
 <footer>
@@ -594,26 +528,19 @@
         </div>
         <div>
             <h4>Quick Links</h4>
-            <p><a href="index.html">Home</a></p>
-            <p><a href="about.html">About Us</a></p>
-            <p><a href="heritage.html">Nyero Heritage</a></p>
-            <p><a href="family.html">Our Family</a></p>
+            <p><a href="index.php">Home</a></p>
+            <p><a href="about.php">About Us</a></p>
+            <p><a href="heritage.php">Nyero Heritage</a></p>
+            <p><a href="family.php">Our Family</a></p>
         </div>
         <div>
             <h4>Connect</h4>
-            <p><a href="gallery.html">Gallery</a></p>
-            <p><a href="events.html">Events</a></p>
-            <p><a href="contact.html">Contact</a></p>
+            <p><a href="gallery.php">Gallery</a></p>
+            <p><a href="events.php">Events</a></p>
+            <p><a href="contact.php">Contact</a></p>
         </div>
     </div>
     <div class="footer-bottom">
-<<<<<<< HEAD
-        <p>&copy;  The Akol Family — Nyero Subcounty, Kumi District, Eastern Uganda</p>
-    </div>
-</footer>
-
-<script src="js/main.js"></script>
-=======
         <p>&copy; 2026 The Akol Family — Nyero Subcounty, Kumi District, Eastern Uganda</p>
     </div>
 </footer>
@@ -652,6 +579,5 @@ function handleFormSubmit(event) {
 }
 </script>
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 </body>
 </html>

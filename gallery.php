@@ -272,15 +272,15 @@
 <body>
 
 <nav>
-    <a href="index.html" class="logo">🪨 The Akols</a>
+    <a href="index.php" class="logo">🪨 The Akols</a>
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="heritage.html">Heritage</a></li>
-        <li><a href="family.html">Family</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="heritage.php">Heritage</a></li>
+        <li><a href="family.php">Family</a></li>
+        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="events.php">Events</a></li>
+        <li><a href="contact.php">Contact</a></li>
     </ul>
 </nav>
 
@@ -317,24 +317,20 @@
         </div>
         <div>
             <h4>Quick Links</h4>
-            <p><a href="index.html">Home</a></p>
-            <p><a href="about.html">About Us</a></p>
-            <p><a href="heritage.html">Nyero Heritage</a></p>
-            <p><a href="family.html">Our Family</a></p>
+            <p><a href="index.php">Home</a></p>
+            <p><a href="about.php">About Us</a></p>
+            <p><a href="heritage.php">Nyero Heritage</a></p>
+            <p><a href="family.php">Our Family</a></p>
         </div>
         <div>
             <h4>Connect</h4>
-            <p><a href="gallery.html">Gallery</a></p>
-            <p><a href="events.html">Events</a></p>
-            <p><a href="contact.html">Contact</a></p>
+            <p><a href="gallery.php">Gallery</a></p>
+            <p><a href="events.php">Events</a></p>
+            <p><a href="contact.php">Contact</a></p>
         </div>
     </div>
     <div class="footer-bottom">
-<<<<<<< HEAD
-        <p>&copy;  The Akol Family - Nyero Subcounty, Kumi District, Eastern Uganda</p>
-=======
         <p>&copy; 2026 The Akol Family - Nyero Subcounty, Kumi District, Eastern Uganda</p>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
     </div>
 </footer>
 
@@ -471,10 +467,6 @@
 
     loadGallery();
 </script>
-<<<<<<< HEAD
-<script src="js/main.js"></script>
-=======
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 </body>
 </html>

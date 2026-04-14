@@ -123,15 +123,6 @@
             overflow: hidden;
         }
 
-<<<<<<< HEAD
-        .family-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         .family-image .placeholder {
             font-size: 4rem;
             color: rgba(255,255,255,0.9);
@@ -262,16 +253,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-<<<<<<< HEAD
-            overflow: hidden;
-        }
-
-        .child-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         }
 
         .child-avatar .placeholder {
@@ -374,15 +355,15 @@
 <body>
 
 <nav>
-    <a href="index.html" class="logo">🪨 The Akols</a>
+    <a href="index.php" class="logo">🪨 The Akols</a>
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="heritage.html">Heritage</a></li>
-        <li><a href="family.html">Family</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="heritage.php">Heritage</a></li>
+        <li><a href="family.php">Family</a></li>
+        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="events.php">Events</a></li>
+        <li><a href="contact.php">Contact</a></li>
     </ul>
 </nav>
 
@@ -398,12 +379,7 @@
         <div class="grandparents-container">
             <div class="grandparent-card">
                 <div class="family-image">
-<<<<<<< HEAD
-                    <!-- LOCAL IMAGE: Papa Kelment - Update path to match your actual image location -->
-                    <img src="img/papa.png" alt="Papa Kelment Akol" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'placeholder\'>👴🏿</div>'">
-=======
                     <div class="placeholder">👴🏿</div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                 </div>
                 <h3>Papa Kelment Akol</h3>
                 <div class="family-role">FAMILY PATRIARCH</div>
@@ -412,12 +388,7 @@
             
             <div class="grandparent-card">
                 <div class="family-image">
-<<<<<<< HEAD
-                    <!-- LOCAL IMAGE: Tata Phoebe - Update path to match your actual image location -->
-                    <img src="img/tata.png" alt="Tata Akiteng Phoebe" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'placeholder\'>👵🏿</div>'">
-=======
                     <div class="placeholder">👵🏿</div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
                 </div>
                 <h3>Tata Akiteng Phoebe</h3>
                 <div class="family-role">FAMILY MATRIARCH</div>
@@ -442,13 +413,9 @@
             <div class="branch-description">
                 <strong>📋 About this branch:</strong> Papa Akol Stephen is the <strong>eldest child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. He has been blessed with <strong>14 children</strong> who are spread across Uganda. His family is known for their strong work ethic, dedication to education, and active participation in community development in Kumi District.
             </div>
-<<<<<<< HEAD
-            
-=======
             <div class="children-grid">
                 
             </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
 
         <!-- 2. Ija Acham Anna Phoebe -->
@@ -461,13 +428,9 @@
             <div class="branch-description">
                 <strong>📋 About this branch:</strong> Ija Acham Anna Phoebe is the <strong>second child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. She has been blessed with <strong>6 children</strong>. Her family is known for their strong faith, hospitality, and dedication to serving the community through church and social activities.
             </div>
-<<<<<<< HEAD
-            
-=======
             <div class="children-grid">
                 
             </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
 
         <!-- 3. Ija Alupo Norah -->
@@ -480,13 +443,9 @@
             <div class="branch-description">
                 <strong>📋 About this branch:</strong> Ija Alupo Norah is the <strong>third child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. She has been blessed with <strong>9 children</strong>. Her family is recognized for their entrepreneurial spirit, with many members engaged in trade and business across Eastern Uganda.
             </div>
-<<<<<<< HEAD
-            
-=======
             <div class="children-grid">
                 
             </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
 
         <!-- 4. Papa Omoding Joseph Benjamin - Deceased -->
@@ -499,13 +458,9 @@
             <div class="branch-description">
                 <strong>📋 About this branch:</strong> Papa Omoding Joseph Benjamin was the <strong>fourth child</strong> of Papa Kelment Akol and Tata Akiteng Phoebe. Though he is <strong>deceased</strong>, his legacy lives on through his <strong>5 children</strong>. His family continues to honor his memory through their commitment to education and community service.
             </div>
-<<<<<<< HEAD
-            
-=======
             <div class="children-grid">
                 
             </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
 
         <!-- 5. Ija Amuge Dinah - Youngest Child -->
@@ -518,13 +473,9 @@
             <div class="branch-description">
                 <strong>📋 About this branch:</strong> Ija Amuge Dinah is the <strong>youngest child</strong> (5th child) of Papa Kelment Akol and Tata Akiteng Phoebe. She has been blessed with <strong>8 children</strong>. Her family is known for their warmth, unity, and dedication to preserving Iteso cultural traditions.
             </div>
-<<<<<<< HEAD
-            
-=======
             <div class="children-grid">
                
             </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
     </div>
 
@@ -556,51 +507,44 @@
 
 </div>
 
-<<<<<<< HEAD
-=======
         </div>
     </div>
 
 </div>
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 <footer class="site-footer">
     <div class="footer-content">
         <div class="footer-brand">
             <div class="brand-name">🪨 The Akol Family</div>
-<<<<<<< HEAD
-            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
-=======
             <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proudly Iteso. Neighbours of Uganda's oldest rock art.</p>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
         
         <div class="footer-col">
             <h4>Pages</h4>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="heritage.html">Nyero Heritage</a></li>
-                <li><a href="family.html">Our Family</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="heritage.php">Nyero Heritage</a></li>
+                <li><a href="family.php">Our Family</a></li>
             </ul>
         </div>
         
         <div class="footer-col">
             <h4>More</h4>
             <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="events.php">Events</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>
         
         <div class="footer-col">
             <h4>Location</h4>
             <ul>
-                <li><a href="heritage.html">Nyero Subcounty</a></li>
-                <li><a href="contact.html">Kumi Municipality</a></li>
-                <li><a href="contact.html">Kumi District</a></li>
-                <li><a href="heritage.html">Eastern Uganda</a></li>
+                <li><a href="heritage.php">Nyero Subcounty</a></li>
+                <li><a href="contact.php">Kumi Municipality</a></li>
+                <li><a href="contact.php">Kumi District</a></li>
+                <li><a href="heritage.php">Eastern Uganda</a></li>
             </ul>
         </div>
     </div>
@@ -610,11 +554,6 @@
     </div>
 </footer>
 
-<<<<<<< HEAD
-<script src="js/main.js"></script>
-
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 <style>
     .site-footer {
         background: #0A0806;
@@ -622,81 +561,6 @@
         padding: 3rem 5% 2rem;
         margin-top: 0;
     }
-<<<<<<< HEAD
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 2rem;
-    }
-    
-    .brand-name {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #C4631A;
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-brand p {
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.5);
-        line-height: 1.6;
-    }
-    
-    .footer-col h4 {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #C4631A;
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
-    }
-    
-    .footer-col ul {
-        list-style: none;
-        padding: 0;
-    }
-    
-    .footer-col li {
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-col a {
-        color: rgba(255,255,255,0.5);
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: color 0.3s;
-    }
-    
-    .footer-col a:hover {
-        color: #C4631A;
-    }
-    
-    .footer-bottom {
-        max-width: 1200px;
-        margin: 2rem auto 0;
-        padding-top: 1.5rem;
-        text-align: center;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        font-size: 0.75rem;
-        color: rgba(255,255,255,0.3);
-    }
-    
-    @media (max-width: 768px) {
-        .footer-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 1.5rem;
-        }
-        
-        .footer-col ul {
-            text-align: center;
-        }
-    }
-</style>
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 
 </body>
 </html>

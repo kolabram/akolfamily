@@ -51,31 +51,28 @@
 </head>
 <body>
 <nav class="site-nav">
-  <a href="index.html" class="nav-brand"><span class="brand-icon">🪨</span> The Akols</a>
+  <a href="index.php" class="nav-brand"><span class="brand-icon">🪨</span> The Akols</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="heritage.html">Nyero Heritage</a></li>
-    <li><a href="family.html">Family</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="events.html">Events</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="about.php">About</a></li>
+    <li><a href="heritage.php">Nyero Heritage</a></li>
+    <li><a href="family.php">Family</a></li>
+    <li><a href="gallery.php">Gallery</a></li>
+    <li><a href="events.php">Events</a></li>
+    <li><a href="contact.php">Contact</a></li>
   </ul>
   <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="heritage.html">Nyero Heritage</a>
-  <a href="family.html">Family</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="events.html">Events</a>
-  <a href="contact.html">Contact</a>
+  <a href="index.php">Home</a>
+  <a href="about.php">About</a>
+  <a href="heritage.php">Nyero Heritage</a>
+  <a href="family.php">Family</a>
+  <a href="gallery.php">Gallery</a>
+  <a href="events.php">Events</a>
+  <a href="contact.php">Contact</a>
 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 <div class="page-hero">
   <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g stroke="rgba(196,99,26,0.9)" fill="none">
@@ -85,7 +82,7 @@
     </g>
   </svg>
   <div class="page-hero-inner">
-    <div class="page-breadcrumb"><a href="index.html">Home</a><span>›</span>Events</div>
+    <div class="page-breadcrumb"><a href="index.php">Home</a><span>›</span>Events</div>
     <h1 class="page-title">Family <em>Events</em></h1>
     <p class="page-subtitle">Upcoming gatherings, milestones, and community activities for the Akol family in 2026.</p>
   </div>
@@ -181,12 +178,12 @@
         </div>
         <div class="sidebar-card">
           <h3>🪨 Nyero Nearby</h3>
-          <p style="font-size:.875rem;color:var(--muted);line-height:1.7;">The Nyero Rock Paintings are 8 km from the homestead. Open daily with guided tours. Visit <a href="heritage.html" style="color:var(--ochre);font-weight:600;">our Heritage page</a> for all the details on visiting times, entry fees, and what to expect.</p>
+          <p style="font-size:.875rem;color:var(--muted);line-height:1.7;">The Nyero Rock Paintings are 8 km from the homestead. Open daily with guided tours. Visit <a href="heritage.php" style="color:var(--ochre);font-weight:600;">our Heritage page</a> for all the details on visiting times, entry fees, and what to expect.</p>
         </div>
         <div class="sidebar-card">
           <h3>📬 Stay Connected</h3>
           <p style="font-size:.875rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Want to be informed about family events? Leave us a message on the contact page.</p>
-          <a href="contact.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact the Akols</a>
+          <a href="contact.php" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact the Akols</a>
         </div>
       </div>
 
@@ -194,50 +191,43 @@
   </div>
 </section>
 
-<<<<<<< HEAD
-=======
     </div>
   </div>
 </section>
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 <footer class="site-footer">
     <div class="footer-content">
         <div class="footer-brand">
             <div class="brand-name">🪨 The Akol Family</div>
-<<<<<<< HEAD
-            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
-=======
             <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proudly Iteso. Neighbours of Uganda's oldest rock art.</p>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
         
         <div class="footer-col">
             <h4>Pages</h4>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="heritage.html">Nyero Heritage</a></li>
-                <li><a href="family.html">Our Family</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="heritage.php">Nyero Heritage</a></li>
+                <li><a href="family.php">Our Family</a></li>
             </ul>
         </div>
         
         <div class="footer-col">
             <h4>More</h4>
             <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="events.php">Events</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>
         
         <div class="footer-col">
             <h4>Location</h4>
             <ul>
-                <li><a href="heritage.html">Nyero Subcounty</a></li>
-                <li><a href="contact.html">Kumi Municipality</a></li>
-                <li><a href="contact.html">Kumi District</a></li>
-                <li><a href="heritage.html">Eastern Uganda</a></li>
+                <li><a href="heritage.php">Nyero Subcounty</a></li>
+                <li><a href="contact.php">Kumi Municipality</a></li>
+                <li><a href="contact.php">Kumi District</a></li>
+                <li><a href="heritage.php">Eastern Uganda</a></li>
             </ul>
         </div>
     </div>
@@ -254,81 +244,6 @@
         padding: 3rem 5% 2rem;
         margin-top: 0;
     }
-<<<<<<< HEAD
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 2rem;
-    }
-    
-    .brand-name {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #C4631A;
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-brand p {
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.5);
-        line-height: 1.6;
-    }
-    
-    .footer-col h4 {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #C4631A;
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
-    }
-    
-    .footer-col ul {
-        list-style: none;
-        padding: 0;
-    }
-    
-    .footer-col li {
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-col a {
-        color: rgba(255,255,255,0.5);
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: color 0.3s;
-    }
-    
-    .footer-col a:hover {
-        color: #C4631A;
-    }
-    
-    .footer-bottom {
-        max-width: 1200px;
-        margin: 2rem auto 0;
-        padding-top: 1.5rem;
-        text-align: center;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        font-size: 0.75rem;
-        color: rgba(255,255,255,0.3);
-    }
-    
-    @media (max-width: 768px) {
-        .footer-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 1.5rem;
-        }
-        
-        .footer-col ul {
-            text-align: center;
-        }
-    }
-</style>
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 <script src="js/main.js"></script>
 </body>
 </html>

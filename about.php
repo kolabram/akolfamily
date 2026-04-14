@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     /* ── ABOUT STORY GRID ── */
-<<<<<<< HEAD
-=======
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin: 3rem 0; }
     .about-text { font-size: 1.1rem; line-height: 1.8; color: var(--muted); }
     .about-text strong { color: var(--stone); font-weight: 600; }
@@ -35,7 +33,6 @@
   </style>
 </head>
 <body>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
     .story-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 5rem; align-items: start; margin-top: 3.5rem;
@@ -113,17 +110,6 @@
     }
     .val-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
 
-<<<<<<< HEAD
-    /* Image styling */
-    .story-img img, .story-img-2 img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
     @media (max-width: 768px) {
       .story-grid { grid-template-columns: 1fr; gap: 2rem; }
       .values-grid { grid-template-columns: 1fr 1fr; }
@@ -138,31 +124,28 @@
 
 <!-- ══ NAV ══ -->
 <nav class="site-nav">
-  <a href="index.html" class="nav-brand"><span class="brand-icon">🪨</span> The Akols</a>
+  <a href="index.php" class="nav-brand"><span class="brand-icon">🪨</span> The Akols</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="heritage.html">Nyero Heritage</a></li>
-    <li><a href="family.html">Family</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="events.html">Events</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="about.php">About</a></li>
+    <li><a href="heritage.php">Nyero Heritage</a></li>
+    <li><a href="family.php">Family</a></li>
+    <li><a href="gallery.php">Gallery</a></li>
+    <li><a href="events.php">Events</a></li>
+    <li><a href="contact.php">Contact</a></li>
   </ul>
   <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="heritage.html">Nyero Heritage</a>
-  <a href="family.html">Family</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="events.html">Events</a>
-  <a href="contact.html">Contact</a>
+  <a href="index.php">Home</a>
+  <a href="about.php">About</a>
+  <a href="heritage.php">Nyero Heritage</a>
+  <a href="family.php">Family</a>
+  <a href="gallery.php">Gallery</a>
+  <a href="events.php">Events</a>
+  <a href="contact.php">Contact</a>
 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 <!-- ══ PAGE HERO ══ -->
 <div class="page-hero">
   <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
@@ -174,7 +157,7 @@
     </g>
   </svg>
   <div class="page-hero-inner">
-    <div class="page-breadcrumb"><a href="index.html">Home</a><span>›</span>About Us</div>
+    <div class="page-breadcrumb"><a href="index.php">Home</a><span>›</span>About Us</div>
     <h1 class="page-title">Our <em>Story</em></h1>
     <p class="page-subtitle">Three generations of Akols, rooted in the red soils of Teso, shaped by community, faith, and the ancient land of Nyero Subcounty.</p>
   </div>
@@ -186,14 +169,6 @@
     <div class="story-grid">
       <div class="story-img-wrap fade-up">
         <div class="story-img">
-<<<<<<< HEAD
-          <!-- LOCAL IMAGE: Family portrait - Update the path to match your actual image location -->
-          <img src="img/family0.png" alt="Akol family portrait" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:360px;\'><span class=\'ph-icon\'>👨‍👩‍👧‍👦</span><span class=\'ph-label\'>Family Portrait</span><span class=\'ph-id\'>img/family0.png</span></div>'">
-        </div>
-        <div class="story-img-2">
-          <!-- LOCAL IMAGE: Homestead - Update the path to match your actual image location -->
-          <img src="img/home.png" alt="Akol homestead, Nyero Subcounty" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%;min-height:220px;\'><span class=\'ph-icon\'>🏡</span><span class=\'ph-label\'>Akol Homestead, Nyero Subcounty</span><span class=\'ph-id\'>img/home.png</span></div>'">
-=======
           <!-- IMAGE SLOT: about-family
                Replace with: <img src="img/about-family.jpg" alt="Akol family portrait"> -->
           <div class="img-placeholder" style="height:100%;min-height:360px;">
@@ -210,7 +185,6 @@
             <span class="ph-label">Akol Homestead, Nyero Subcounty</span>
             <span class="ph-id">img/about-homestead.jpg</span>
           </div>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
         <div class="quote-block">
           <p>"Wherever we go, Kumi is where we come back to."</p>
@@ -332,39 +306,35 @@
     <div class="footer-content">
         <div class="footer-brand">
             <div class="brand-name">🪨 The Akol Family</div>
-<<<<<<< HEAD
-            <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proud Iteso. Neighbours of Uganda's oldest rock art.</p>
-=======
             <p>Rooted in Nyero Subcounty, Kumi Municipality, Eastern Uganda.<br>Proudly Iteso. Neighbours of Uganda's oldest rock art.</p>
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
         </div>
         
         <div class="footer-col">
             <h4>Pages</h4>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="heritage.html">Nyero Heritage</a></li>
-                <li><a href="family.html">Our Family</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="heritage.php">Nyero Heritage</a></li>
+                <li><a href="family.php">Our Family</a></li>
             </ul>
         </div>
         
         <div class="footer-col">
             <h4>More</h4>
             <ul>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="events.php">Events</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>
         
         <div class="footer-col">
             <h4>Location</h4>
             <ul>
-                <li><a href="heritage.html">Nyero Subcounty</a></li>
-                <li><a href="contact.html">Kumi Municipality</a></li>
-                <li><a href="contact.html">Kumi District</a></li>
-                <li><a href="heritage.html">Eastern Uganda</a></li>
+                <li><a href="heritage.php">Nyero Subcounty</a></li>
+                <li><a href="contact.php">Kumi Municipality</a></li>
+                <li><a href="contact.php">Kumi District</a></li>
+                <li><a href="heritage.php">Eastern Uganda</a></li>
             </ul>
         </div>
     </div>
@@ -381,81 +351,6 @@
         padding: 3rem 5% 2rem;
         margin-top: 0;
     }
-<<<<<<< HEAD
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 2rem;
-    }
-    
-    .brand-name {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #C4631A;
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-brand p {
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.5);
-        line-height: 1.6;
-    }
-    
-    .footer-col h4 {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #C4631A;
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
-    }
-    
-    .footer-col ul {
-        list-style: none;
-        padding: 0;
-    }
-    
-    .footer-col li {
-        margin-bottom: 0.5rem;
-    }
-    
-    .footer-col a {
-        color: rgba(255,255,255,0.5);
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: color 0.3s;
-    }
-    
-    .footer-col a:hover {
-        color: #C4631A;
-    }
-    
-    .footer-bottom {
-        max-width: 1200px;
-        margin: 2rem auto 0;
-        padding-top: 1.5rem;
-        text-align: center;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        font-size: 0.75rem;
-        color: rgba(255,255,255,0.3);
-    }
-    
-    @media (max-width: 768px) {
-        .footer-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 1.5rem;
-        }
-        
-        .footer-col ul {
-            text-align: center;
-        }
-    }
-</style>
-=======
->>>>>>> a2cd8858f2d350189bd5606e687e92a3b9d8cad6
 
 <script src="js/main.js"></script>
 </body>
